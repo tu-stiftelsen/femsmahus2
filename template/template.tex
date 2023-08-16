@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=4cm]{geometry}
+\setlength{\headheight}{82pt}
+
+\usepackage[document]{ragged2e}
+\usepackage{mathptmx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable,booktabs}
+
+\usepackage[compact]{titlesec}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\renewcommand\labelitemi{--}
+
+\setcounter{secnumdepth}{0}
+\setlength{\parskip}{0.5cm}
+\setlength{\parindent}{0.0mm}
+
+\setcounter{tocdepth}{1}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\raisebox{-0.5\height}{\includegraphics[width=3cm]{template/tu-logo}}}
+
+\chead{\raisebox{-0.6\height}{\parbox[b][][t]{5.5cm}{%
+\begin{center}
+\large
+$shorttitle$
+\end{center}}}}
+
+\rhead{\begin{tabular}{rl}
+Beteckning: & $designation$\\
+Version: & $version$\\
+Datum: & $date$\\
+Sida: & \thepage~av~\pageref{LastPage}
+\end{tabular}}
+
+\begin{document}
+
+\section*{$title$}
+
+$if(toc)$
+\tableofcontents
+$endif$
+
+$if(versions)$
+\section{Versionshistorik}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Version & Beskrivning\tabularnewline%
+\midrule
+\endhead%
+$for(versions)$
+$versions.version$ & $versions.description$\tabularnewline%
+$endfor$
+\bottomrule
+\end{longtable}
+$endif$
+
+$body$
+\end{document}
