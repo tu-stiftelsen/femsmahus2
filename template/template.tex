@@ -1,8 +1,20 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-%\usepackage[swedish]{babel}
+
+% Font stuff
 \usepackage{fontspec}
 
+% lets use roboto because it is open and quite nice, or?
+% \setmainfont{Roboto}[
+%   Path           = fonts/,
+%   Extension      = .ttf,
+%   UprightFont    = *-Regular,
+%   ItalicFont     = *-Italic,
+%   BoldFont       = *-Bold,
+%   BoldItalicFont = *-BoldItalic,
+% ]
+
+% Switch from babel to improve word wrapping etc with Swedish
+%\usepackage[swedish]{babel}
 \usepackage{polyglossia}
 \setmainlanguage{swedish}
 
@@ -10,7 +22,8 @@
 \setlength{\headheight}{82pt}
 
 \usepackage[document]{ragged2e}
-\usepackage{mathptmx}
+% Mathptmx ruins unicode it seems
+%\usepackage{mathptmx}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{graphicx}
@@ -34,7 +47,7 @@
 \usepackage[compact]{titlesec}
 
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\partopsep}{2pt}\setlength{\topsep}{2pt}}
 
 \renewcommand\labelitemi{--}
 

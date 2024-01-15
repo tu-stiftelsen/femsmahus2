@@ -1,16 +1,12 @@
-
 ---
-lang: sv
-...
-
----
-lang: sv
+lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
 version: '0.2'
 date: '2024-01-15'
 toc: false
+fontfamily: courier new
 ---
 
 # Inledning
@@ -19,7 +15,6 @@ Den här specifikation ämnar beskriva en Internetspecifikation baserat på
 **end-to-end** principen som innebär att ett nätverks enda uppgift är att
 vidarebefordra paket mellan ändpunkter, utan att bearbeta eller förändra
 innehållet.
-
 
 End-to-end-principen gör nätverket symmetriskt, vilket innebär att alla
 ändpunkter är likvärdiga och kan utväxla vilken information som helst utan
@@ -63,10 +58,10 @@ Bidrag i form av ändringsförslag och "issues" välkomnas.
 I den här specifikationen används en nätverksmodell där de fyra nedersta
 lagren benämns enligt nedan:
 
-**Lager 1** Fysiska lagret  
-**Lager 2** Datalänklagret  
-**Lager 3** Nätverkslagret (adressering, routing etc)  
-**Lager 4** Transportlagret (uppdelning i datapaket med omsändningar etc)  
+- **Lager 1** Fysiska lagret  
+- **Lager 2** Datalänklagret  
+- **Lager 3** Nätverkslagret (adressering, routing etc)  
+- **Lager 4** Transportlagret (uppdelning i datapaket med omsändningar etc)  
 
 # Lager 3: Förmedling av IPv6
 
@@ -74,9 +69,8 @@ Grunden för all kommunikation enligt den här specifikationen är förmedling a
 den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 [RFC&nbsp;8200](https://doi.org/10.17487/rfc8200).
 
-**Krav:**
-
-* En internetanslutning baseras på förmedlning av IPv6-paket
+- **Krav:**
+  - En internetanslutning **ska** baseras på förmedlning av IPv6-paket
 
 ## Tilldelning av IP-adresser
 
@@ -109,18 +103,16 @@ långt som möjligt. I de fall ändring sker ska trafik till och från de
 tidigare tilldelade adresserna fortsätta förmedlas under lägst tre
 månader.
 
-**Krav:**
-
-* Adresser tilldelade av operatör till användare **ska** vara globalt adresserbara
-* Tilldelning av adresser **ska** ske genom DHCPv6 PD [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)
-* Tilldelning av adresser **ska** ske med minst ett /60-block
-* DHCPv6 PD exclude **ska** användas för att indikera de adresser som avlämningsnätet använder
-* Avlämningsnätet **ska** klara av *minst* 16 direktanslutna enheter
-* Ändring av tilldelade adresser **ska** informeras om tre månader innan ändring
-
-**Rekommendation:**
-* Tilldelning av adresser **bör** ske med minst ett /56-block
-* Tilldelade adresser **bör** inte ändras
+- **Krav:**
+  - Adresser tilldelade av operatör till användare **ska** vara globalt adresserbara
+  - Tilldelning av adresser **ska** ske genom DHCPv6 PD [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)
+  - Tilldelning av adresser **ska** ske med minst ett /60-block
+  - DHCPv6 PD exclude **ska** användas för att indikera de adresser som avlämningsnätet använder
+  - Avlämningsnätet **ska** klara av *minst* 16 direktanslutna enheter
+  - Ändring av tilldelade adresser **ska** informeras om tre månader innan ändring
+- **Rekommendation:**
+  - Tilldelning av adresser **bör** ske med minst ett /56-block
+  - Tilldelade adresser **bör** inte ändras
 
 ### Rekommendation för kundansluten utrustning
 
@@ -129,8 +121,8 @@ utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kra
 händelse av felfall där paketförmedling fungerar men stödfuntioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
-**Rekommendation:**
-* Tilldelade adresser **bör** fungera även efter att DHCP-lease har utgått
+- **Rekommendation:**
+  - Tilldelade adresser **bör** fungera även efter att DHCP-lease har utgått
 
 ## Paketförmedlning
 
@@ -165,19 +157,18 @@ avlämningsutrustning är 60 sekunder. Det här kravet innebär att all operatö
 avlämningsutrustningen, måste vara redundant. Längsta tillåtna avbrott på operatörens
 avlämningsutrustning är 8 timmar.
 
-**Krav:**
-
-* Operatören **ska** förmedla IPv6-paket adresserade till adresser inom användarens adressrymd till minst en enhet ansluten till avlämningsnätet
-* Operatören **ska** stödja en MTU på 9000&nbsp;byte och 1500&nbsp;byte på avlämningsnätet
-* Operatören **ska** erbjuda en MTU på 9000&nbsp;byte som standard och anpassa till 1500&nbsp;byte om så krävs
-* Operatören **ska** kunna hantera *minst* 16 samtidigare NDP-sessioner för användarutrustning ansluten direkt till avlämningsnätet
-* Operatören **ska** enbart förmedla vidare paket från användaren med avsändaradress inom den tilldelade adressrymden
-* Operatören **ska** följa etablerad paket-taggningsstandard
-* Operatören **ska** designa nät med redudans och erbjuda tjänster utan nedtid
-* Operatören **ska** **TODO** formulera 8-timmars-kravet fint
-
-**Rekommendation:**
-- Operatören **bör** erbjuda en MTU på 9180&nbsp;byte på avlämningsnätet på användarens begäran
+- **Krav:**
+  - Operatören **ska** förmedla IPv6-paket adresserade till adresser inom användarens adressrymd till minst en enhet ansluten till avlämningsnätet
+  - Operatören **ska** stödja en MTU på 9000&nbsp;byte och 1500&nbsp;byte på avlämningsnätet
+  - Operatören **ska** erbjuda en MTU på 9000&nbsp;byte som standard och anpassa till 1500&nbsp;byte om så krävs
+  - Operatören **ska** kunna hantera *minst* 16 samtidigare NDP-sessioner för användarutrustning ansluten direkt till avlämningsnätet
+  - Operatören **ska** enbart förmedla vidare paket från användaren med avsändaradress inom den tilldelade adressrymden
+  - Operatören **ska** följa etablerad paket-taggningsstandard
+  - Operatören **ska** designa nät med redudans och erbjuda tjänster utan
+    nedtid
+  - Operatören **ska** **TODO** formulera 8-timmars-kravet fint
+- **Rekommendation:**
+  - Operatören **bör** erbjuda en MTU på 9180&nbsp;byte på avlämningsnätet på användarens begäran
 
 # Lager 1 & 2: specifikation för överlämning
 
@@ -196,22 +187,19 @@ Följande standarder accepteras i avlämningspunkten:
 Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har avtalats. Så kallad
 VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
-**Krav:**
-
- * Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
+- **Krav:**
+  - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
 
 
 ## Trådlös anslutning
 
-**FIXME:** Utveckla lite
-
-**FIXME:** Lägg tillbaka mobiltelefonitexten och dubbelkolla formuleringar
+- **FIXME:** Utveckla lite
+- **FIXME:** Lägg tillbaka mobiltelefonitexten och dubbelkolla formuleringar
 
 Avlämning av trådlös internetanslutning ska ske genom Wi-Fi (IEEE 802.11a/b/g/n/ac/ax/be).
 
-**Krav:**
-
- * Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
+- **Krav:**
+  - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
 
 # Övriga kommentarer och rekommendationer
 
@@ -226,10 +214,9 @@ tunnling av globalt nåbara IPv4-adresser. Jämfört med så kallad "dual
 stack"-lösning bedöms denna arkitektur minska såväl systemkomplexitet som
 kostnader för utbyggnad och löpande drift av infrastrukturen.
 
-**Rekommendation:**
-
- * Operatören **bör** erbjuda en single-stack lösning baserat på IPv6
- * Operatören **bör** erbjuda andra protokoll och adressrymber, såsom IPv4, över IPv6
+- **Rekommendation:**
+  - Operatören **bör** erbjuda en single-stack lösning baserat på IPv6
+  - Operatören **bör** erbjuda andra protokoll och adressrymber, såsom IPv4, över IPv6
 
 # Verifiering av internetanslutning
 
@@ -247,20 +234,21 @@ referensmottagare med en hastighet av ett paket per sekund. Referensmottagarna t
 skickar ICMP-svar till avsändaren. I det fall referensmottagaren inte erhåller paket väljs en annan
 mottagare. I fall ingen mottagare erhåller paket är testet underkänt.
 
-Det finns fyra typer av referensmottagare med stöd för olika MTU:
+Följande referensmottagare med stöd för olika MTU ska användas:
 
 * 576 byte
 * 1500 byte
 * 4470 byte
 * 9000 byte
 
-**Krav:**
+Detta för att ge en god testbredd.
 
-* För godkänt resultat ska avsändaren ha mottagit svar från referensmottagaren på 249 av 250
+- **Testkrav:**
+  - För godkänt resultat ska avsändaren ha mottagit svar från referensmottagaren på 249 av 250
   avsända paket (99,6%) med IPv6 MTU på 9000&nbsp;byte, 4470&nbsp;byte, 1500&nbsp;byte och
   576&nbsp;byte.
-* Paket som tar längre tid än 20&nbsp;ms (en väg) att nå mottagaren räknas som förlorat.
-* Kommer fler än fem (2%) av paketen fram i oordning räknas det som avbrott på förbindelsen.
+  - Paket som tar längre tid än 20&nbsp;ms (en väg) att nå mottagaren räknas som förlorat.
+  - Kommer fler än fem (2%) av paketen fram i oordning räknas det som avbrott på förbindelsen.
 
 ## Test av adressering och routing
 
@@ -269,17 +257,15 @@ två slumpmässigt utvalda mottagaradresser på avlämningsnätet samt till en o
 referensmottagaren skickas från en godtycklig avsändare inom Sverige. Storleken på paketen ska
 motsvara en MTU på 1500&nbsp;byte.
 
-**Krav:**
-
-* För godkänt resultat ska mottagarna ha tagit emot 249 av 250 avsända paket (99,6%).
+- **Testkrav:**
+  - För godkänt resultat ska mottagarna ha tagit emot 249 av 250 avsända paket (99,6%).
 
 Korrekt formaterade IPv6-paket med slumpmässignyttolast och lager 4-protokoll skickas till
 slumpmässigt utvalda mottagaradresser inom det adressblock som tilldelats användaren (exklusive
 avlämningsnätets adresser). Storleken på paketen ska motsvara en MTU på 1500&nbsp;byte.
 
-**Krav:**
-
-* För godkänt resultat ska den enhet som tilldelats adresserna av internetoperatörens utrustning ha
+- **Testkrav:**
+  - För godkänt resultat ska den enhet som tilldelats adresserna av internetoperatörens utrustning ha
   mottagit 249 av 250 avsända paket (99,6%).
 
 ## Mätning av dynamiska prestanda
@@ -300,8 +286,9 @@ Följande tester genomförs:
 * Från en adress i användarens anslutningsnät till en referensmottagare, i en takt motsvarande 95%
   av avtalad bandbredd.
 
-**Krav:**
+Dessa tester ska utvärderas mot testkraven.
 
-* Max ett paket per sänd grupp får försvinna vid de två första testerna.
-* Inga paket får försvinna vid de två sista testerna.
-* Godkända prestanda ska uppnås mot samtliga referenssändare/-mottagare i Sverige.
+- **Testkrav:**
+  - Max ett paket per sänd grupp får försvinna vid de två första testerna.
+  - Inga paket får försvinna vid de två sista testerna.
+  - Godkända prestanda ska uppnås mot samtliga referenssändare/-mottagare i Sverige.
