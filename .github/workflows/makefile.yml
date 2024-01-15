@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install dependencies
-      run: sudo apt install -y pandoc texlive-latex-base
+      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra
 
     - name: Clean project folder
       run: make clean
