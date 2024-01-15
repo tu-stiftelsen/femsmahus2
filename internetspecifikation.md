@@ -2,42 +2,60 @@
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
-version: '0.1'
-date: '2023-08-20'
+version: '0.2'
+date: '2024-01-15'
 toc: false
 ---
 
 # Inledning
 
-Syftet med den här specifikationen är att beskriva en internetinfrastruktur för Sverige som är
-utformad enligt internets grundläggande principer. Den viktigaste aspekten för en framtidssäker
-internetinfrastruktur är **end-to-end-principen** som innebär att ett nätverks enda uppgift är att
-vidarebefordra paket mellan ändpunkter, utan att bearbeta eller förändra innehållet.
-End-to-end-principen gör nätverket symmetriskt, vilket innebär att alla ändpunkter är likvärdiga och
-kan utväxla vilken information som helst utan föregående koordinering, signalering eller tillstånd.
-Trots detta finns det inget som förhindrar en användare att själv införa ytterligare funktioner som
-begränsar trafik och funktionalitet, exempelvis brandväggar eller adressöversättningsfunktioner.
+Den här specifikation ämnar beskriva en Internetspecifikation baserat på
+**end-to-end** principen som innebär att ett nätverks enda uppgift är att
+vidarebefordra paket mellan ändpunkter, utan att bearbeta eller förändra
+innehållet.
 
-Arbetet med att fastställa internets arkitekturprinciper och standarder sker inom ramen för **The
-Internet Engineering Task Force (IETF)**. Resultaten av IETF:s arbete publiceras i en dokumentserie
-känd som **Request for Comments (RFC)**. För att ett nätverk som utgör en del av internet ska vara
-fungerande och framtidssäkert är det en förutsättning att det är designat på det sätt som beskrivs
-av gällande RFC:er.
 
-Utgångspunkten i designen av en internetinfrastruktur för Sverige har varit att den ska
-tillhandahålla förmedling av IPv6-paket i enlighet med IETF:s designprinciper.
+End-to-end-principen gör nätverket symmetriskt, vilket innebär att alla
+ändpunkter är likvärdiga och kan utväxla vilken information som helst utan
+föregående koordinering, signalering eller tillstånd. Trots detta finns
+det inget som förhindrar en användare att själv införa ytterligare
+funktioner som begränsar trafik och funktionalitet, exempelvis brandväggar
+eller adressöversättningsfunktioner.
+
+Arbetet med att fastställa internets arkitekturprinciper och standarder
+sker inom ramen för **The Internet Engineering Task Force (IETF)**.
+Resultaten av IETF:s arbete publiceras i en dokumentserie känd som
+**Request for Comments (RFC)**. För att ett nätverk som utgör en del av
+internet ska vara fungerande och framtidssäkert är det en förutsättning
+att det är designat på det sätt som beskrivs av gällande RFC:er.
+
+Detta dokument ämnar beskriva en del av designen i en
+internetinfrastruktur för Sverige. Denna specifikation antar att denna
+infrastruktur är baserad på förmedling av IPv6-paket i enlighet med IETF:s
+designprinciper.
+
+## Användning och målgrupp
+
+Denna specifikation är tänkt att användas av internetoperatörer, s.k.
+ISP:er, vid design av deras tjänster. Denna specifikation kan även
+användas av slutanvändare för att verifiera att ISP:er lever upp till de
+krav som ställs på dem.
+
+## Terminologi
+
+Denna specifikation avser med begreppet **IP** enbart **IPv4**.
 
 ## Utveckling av specifikationen
 
-Utvecklingen av den här specifikationen är pågående. Aktuell version av specifikationen finns
-alltid tillgänglig på projektets Github-sida:
-[https://github.com/tu-stiftelsen/femsmahus2](https://github.com/tu-stiftelsen/femsmahus2). Bidrag i
-form av ändringsförslag och "issues" välkomnas.
+Utvecklingen av den här specifikationen är pågående. Aktuell version av
+specifikationen finns alltid tillgänglig på projektets Github-sida:
+[https://github.com/tu-stiftelsen/femsmahus2](https://github.com/tu-stiftelsen/femsmahus2).
+Bidrag i form av ändringsförslag och "issues" välkomnas.
 
-# OSI-modellen
+# Nätverksmodell
 
-Den så kallade [OSI-modellen](https://sv.wikipedia.org/wiki/OSI-modellen) definierar data överföring
-i 7 olika lager. I den här specifikationen benämns de fyra nedersta lagren enligt nedan.
+I den här specifikationen används en nätverksmodell där de fyra nedersta
+lagren benämns enligt nedan:
 
 **Lager 1** Fysiska lagret  
 **Lager 2** Datalänklagret  
@@ -50,6 +68,9 @@ Grunden för all kommunikation enligt den här specifikationen är förmedling a
 den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 [RFC&nbsp;8200](https://doi.org/10.17487/rfc8200).
 
+**Krav:**
+* En internetanslutning baseras på förmedlning av IPv6-paket
+
 ## Tilldelning av IP-adresser
 
 I IPv6 tilldelas adresser i block. Storleken på ett block uttrycks normalt som ett snedstreck följt
@@ -61,21 +82,37 @@ enskild broadcastdomän är normalt /64.
 Samtliga tilldelade adresser ska vara globalt adresserbara.
 
 Tilldelning av adressblock till användare sker genom Dynamic Host Configuration Protocol version 6
-(DHCPv6) prefix delegation (PD).
+(DHCPv6) prefix delegation (PD) [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415).
 
 Standardtilldelningen av IP-adresser till en kund ska vara ett /56-block, vilket motsvarar 256
 /64-block. Minsta tillåtna tilldelning för en fast anslutning är ett /60-block.
 
-Det block som ansluter användare till leverantör (avlämningsnätet) tilldelas normalt det första
-eller sista /64-blocket ur användarens allokering. Det är även tillåtet att tilldela ett annat
-globalt adresserbart adressblock till avlämningsnätet. Avlämningsnätet annonseras mot användaren
-genom ICMPv6 router advertisement (RA). I de fall ett adressblock ur användarens allokering används
-för avlämningsnätet ska det indikeras för användaren genom DHCPv6 PD exclude. Det ska vara möjligt
-för kunden att ansluta minst 16 enheter direkt till avlämningsnätet.
+Det block som ansluter användare till operatör (avlämningsnätet) tilldelas
+normalt det första eller sista /64-blocket ur användarens allokering. Det
+är även tillåtet att tilldela ett annat globalt adresserbart adressblock
+till avlämningsnätet. Avlämningsnätet annonseras mot användaren genom
+ICMPv6 router advertisement (RA). I de fall ett adressblock ur användarens
+allokering används för avlämningsnätet ska det indikeras för användaren
+genom DHCPv6 PD exclude [RFC&nbsp;6603](https://doi.org/10.17487/rfc6603).
+Det ska vara möjligt för kunden att ansluta minst 16 enheter direkt till
+avlämningsnätet.
 
-Ändring av de tilldelade adresserna för en anslutning ska undvikas så långt som möjligt. I de fall
-ändring sker ska trafik till och från de tidigare tilldelade adresserna fortsätta förmedlas under
-lägst tre månader.
+Ändring av de tilldelade adresserna för en anslutning ska undvikas så
+långt som möjligt. I de fall ändring sker ska trafik till och från de
+tidigare tilldelade adresserna fortsätta förmedlas under lägst tre
+månader.
+
+**Kravs:**
+* Adresser tilldelade av operatör till användare **ska** vara globalt adresserbara
+* Tilldelning av adresser **ska** ske genom DHCPv6 PD [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)
+* Tilldelning av adresser **ska** ske med minst ett /60-block
+* DHCPv6 PD exclude **ska** användas för att indikera de adresser som avlämningsnätet använder
+* Avlämningsnätet **ska** klara av *minst* 16 direktanslutna enheter
+* Ändring av tilldelade adresser **ska** informeras om tre månader innan ändring
+
+**Rekommendation:**
+* Tilldelning av adresser **bör** ske med minst ett /56-block
+* Tilldelade adresser **bör** inte ändras
 
 ### Rekommendation för kundansluten utrustning
 
@@ -84,7 +121,10 @@ utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kra
 händelse av felfall där paketförmedling fungerar men stödfuntioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
-## Krav
+**Rekommendation:**
+* Tilldelade adresser **bör** fungera även efter att DHCP-lease har utgått
+
+## Paketförmedlning
 
 **Förmedling** Operatören ska vidarebefordra IPv6-paket adresserade till adresser inom användarens
 tilldelade adressrymd till minst en enhet ansluten till avlämningsnätet.
@@ -101,8 +141,9 @@ anslutna utrustning inte har stöd för detta ska anpassning av MTU till 1500&nb
 automatiskt. Om avlämningsmediet har stöd för MTU på 9180&nbsp;byte ska det användas på begäran av
 kunden.
 
-**NDP** Operatörens avlämningsutrustning ska kunna hantera minst 16 samtidiga NDP-sessioner för
-utrustning ansluten direkt till avlämningsnätet.
+**Neighbor Discovery Protocol (NDP)** Operatörens avlämningsutrustning ska
+kunna hantera minst 16 samtidiga NDP-sessioner för utrustning ansluten
+direkt till avlämningsnätet.
 
 **Reverse-path forwarding (RPF)-kontroll** Internetoperatören ska genomföra RPF-kontroll av paket
 förmedlade från användaren. Endast paket med avsändaradresser från användarens tilldelade
@@ -116,37 +157,70 @@ avlämningsutrustning är 60 sekunder. Det här kravet innebär att all operatö
 avlämningsutrustningen, måste vara redundant. Längsta tillåtna avbrott på operatörens
 avlämningsutrustning är 8 timmar.
 
-# Lager 1 & 2
+**Krav:**
+
+* Operatören **ska** förmedla IPv6-paket adresserade till adresser inom användarens adressrymd till minst en enhet ansluten till avlämningsnätet
+* Operatören **ska** stödja en MTU på 9000&nbsp;byte och 1500&nbsp;byte på avlämningsnätet
+* Operatören **ska** erbjuda en MTU på 9000&nbsp;byte som standard och anpassa till 1500&nbsp;byte om så krävs
+* Operatören **ska** kunna hantera *minst* 16 samtidigare NDP-sessioner för användarutrustning ansluten direkt till avlämningsnätet
+* Operatören **ska** enbart förmedla vidare paket från användaren med avsändaradress inom den tilldelade adressrymden
+* Operatören **ska** följa etablerad paket-taggningsstandard
+* Operatören **ska** designa nät med redudans och erbjuda tjänster utan nedtid
+* Operatören **ska** **TODO** formulera 8-timmars-kravet fint
+
+**Rekommendation:**
+- Operatören **bör** erbjuda en MTU på 9180&nbsp;byte på avlämningsnätet på användarens begäran
+
+# Lager 1 & 2 - kontakttyper och protokoll
 
 ## Fast anslutning
 
 Följande standarder accepteras i avlämningspunkten:
 
 * 1 Gbit Ethernet twisted pair (IEEE 802.3ab)
-* 1 Gbit Ethernet optical duplex SM fiber, (IEEE 802.xx)
+* 1 Gbit Ethernet optical duplex SM fiber, (IEEE 802.3ah ??)
 * 10 Gbit Ethernet twisted pair (IEEE 802.3an)
-* 10 Gbit Ethernet optical single fiber (IEEE 802.xx)
-* 10 Gbit Ethernet optical duplex SM fiber (IEEE 802.xx)
+* 10 Gbit Ethernet optical single fiber (IEEE 802.3ae ??)
+* 10 Gbit Ethernet optical duplex SM fiber (IEEE 802.3ae ??)
 * 100 Gbit Ethernet-avlämning specificeras under 2024
 * 400 Gbit Ethernet-avlämning specificeras under 2025
 
 Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har avtalats. Så kallad
 VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
+**Krav:**
+
+ * Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
+
 ## Trådlös anslutning
 
-Leverans av trådlös internetanslutning ska ske genom Wi-Fi (IEEE 802.11a/b/g/n/ac/ax/be).
+**FIXME:** Utveckla lite
 
-# IPv4-tjänst
+**FIXME:** Lägg tillbaka mobiltelefonitexten och dubbelkolla formuleringar
 
-Eftersom det råder stor brist på IPv4-adresser passerar majoriteten av internetanvändarnas trafik
-idag genom adressöversättare. Utgångspunkten för den arkitektur som specificeras här är att IPv6
-används som bärare för all elektronisk kommunikation. Tillgång till IPv4 ("IPv4 bredbandsaccess")
-levereras därför som en tjänst över IPv6 och presenteras mot kunden från abonnentplacerad
-utrustning. Det finns flera IETF-definierade metoder för detta, exempelvis med hjälp av CGNAT eller
-tunnling av globalt nåbara IPv4-adresser. Jämfört med så kallad "dual stack"-lösning bedöms denna
-arkitektur minska såväl systemkomplexitet som kostnader för utbyggnad och löpande drift av
-infrastrukturen.
+Avlämning av trådlös internetanslutning ska ske genom Wi-Fi (IEEE 802.11a/b/g/n/ac/ax/be).
+
+**Krav:**
+
+ * Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
+
+# Övriga kommentarer och rekommendationer
+
+## IPv4-tjänst
+
+Utgångspunkten för den arkitektur som specificeras här är att IPv6 används
+som bärare för all elektronisk kommunikation. Tillgång till IPv4 ("IPv4
+bredbandsaccess") ska därför levereras som en tjänst över IPv6 och
+presenteras mot kunden från abonnentplacerad utrustning. Det finns flera
+IETF-definierade metoder för detta, exempelvis med hjälp av CGNAT eller
+tunnling av globalt nåbara IPv4-adresser. Jämfört med så kallad "dual
+stack"-lösning bedöms denna arkitektur minska såväl systemkomplexitet som
+kostnader för utbyggnad och löpande drift av infrastrukturen.
+
+**Rekommendation:**
+
+ * Operatören **bör** erbjuda en single-stack lösning baserat på IPv6
+ * Operatören **bör** erbjuda andra protokoll och adressrymber, såsom IPv4, över IPv6
 
 # Verifiering av internetanslutning
 
@@ -171,7 +245,7 @@ Det finns fyra typer av referensmottagare med stöd för olika MTU:
 * 4470 byte
 * 9000 byte
 
-Krav:
+**Krav:**
 
 * För godkänt resultat ska avsändaren ha mottagit svar från referensmottagaren på 249 av 250
   avsända paket (99,6%) med IPv6 MTU på 9000&nbsp;byte, 4470&nbsp;byte, 1500&nbsp;byte och
@@ -186,7 +260,7 @@ två slumpmässigt utvalda mottagaradresser på avlämningsnätet samt till en o
 referensmottagaren skickas från en godtycklig avsändare inom Sverige. Storleken på paketen ska
 motsvara en MTU på 1500&nbsp;byte.
 
-Krav:
+**Krav:**
 
 * För godkänt resultat ska mottagarna ha tagit emot 249 av 250 avsända paket (99,6%).
 
@@ -194,7 +268,7 @@ Korrekt formaterade IPv6-paket med slumpmässignyttolast och lager 4-protokoll s
 slumpmässigt utvalda mottagaradresser inom det adressblock som tilldelats användaren (exklusive
 avlämningsnätets adresser). Storleken på paketen ska motsvara en MTU på 1500&nbsp;byte.
 
-Krav:
+**Krav:**
 
 * För godkänt resultat ska den enhet som tilldelats adresserna av internetoperatörens utrustning ha
   mottagit 249 av 250 avsända paket (99,6%).
@@ -217,7 +291,7 @@ Följande tester genomförs:
 * Från en adress i användarens anslutningsnät till en referensmottagare, i en takt motsvarande 95%
   av avtalad bandbredd.
 
-Krav:
+**Krav:**
 
 * Max ett paket per sänd grupp får försvinna vid de två första testerna.
 * Inga paket får försvinna vid de två sista testerna.
