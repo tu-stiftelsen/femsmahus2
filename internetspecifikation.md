@@ -1,4 +1,5 @@
 ---
+lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
@@ -6,6 +7,7 @@ version: '0.2'
 date: '2024-01-15'
 toc: false
 ---
+
 
 # Inledning
 
@@ -43,7 +45,7 @@ krav som ställs på dem.
 
 ## Terminologi
 
-Denna specifikation avser med begreppet **IP** enbart **IPv4**.
+Denna specifikation avser med begreppet **IP** enbart **IPv6**.
 
 ## Utveckling av specifikationen
 
@@ -69,6 +71,7 @@ den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 [RFC&nbsp;8200](https://doi.org/10.17487/rfc8200).
 
 **Krav:**
+
 * En internetanslutning baseras på förmedlning av IPv6-paket
 
 ## Tilldelning av IP-adresser
@@ -102,7 +105,8 @@ långt som möjligt. I de fall ändring sker ska trafik till och från de
 tidigare tilldelade adresserna fortsätta förmedlas under lägst tre
 månader.
 
-**Kravs:**
+**Krav:**
+
 * Adresser tilldelade av operatör till användare **ska** vara globalt adresserbara
 * Tilldelning av adresser **ska** ske genom DHCPv6 PD [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)
 * Tilldelning av adresser **ska** ske med minst ett /60-block
