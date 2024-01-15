@@ -192,6 +192,7 @@ VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
  * Operatören **ska** avlämna nät enligt någon av specifikationerna ovan
 
+
 ## Trådlös anslutning
 
 **FIXME:** Utveckla lite
