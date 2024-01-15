@@ -1,5 +1,10 @@
+
 ---
-lang: sv-SE
+lang: sv
+...
+
+---
+lang: sv
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
@@ -7,7 +12,6 @@ version: '0.2'
 date: '2024-01-15'
 toc: false
 ---
-
 
 # Inledning
 
