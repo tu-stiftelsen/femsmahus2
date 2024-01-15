@@ -25,5 +25,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-          name: specification
-          path: internetspecifkation.pdf
+          name: Internetspecifikation
+          path: internetspecifikation.pdf
