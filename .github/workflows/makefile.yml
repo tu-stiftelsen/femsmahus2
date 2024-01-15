@@ -1,0 +1,29 @@
+name: Makefile CI for Internet-specification
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all
+
+    - name: Clean project folder
+      run: make clean
+
+    - name: Try building project
+      run: make
+
+    - uses: actions/upload-artifact@v3
+      with:
+          name: Internetspecifikation
+          path: internetspecifikation.pdf
