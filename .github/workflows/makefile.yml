@@ -24,6 +24,6 @@ jobs:
       run: make
 
     - uses: actions/upload-artifact@v3
-        with:
+      with:
           name: specification
           path: internetspecifkation.pdf
