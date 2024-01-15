@@ -171,7 +171,7 @@ avlämningsutrustning är 8 timmar.
 **Rekommendation:**
 - Operatören **bör** erbjuda en MTU på 9180&nbsp;byte på avlämningsnätet på användarens begäran
 
-# Lager 1 & 2 - kontakttyper och protokoll
+# Lager 1 & 2: specifikation för överlämning
 
 ## Fast anslutning
 
