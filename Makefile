@@ -8,4 +8,4 @@ all:
 	make -C internetspecifikation all
 
 clean:
-	rm -f *.pdf
+	make -C internetspecifikation clean
