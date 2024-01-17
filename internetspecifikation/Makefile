@@ -5,8 +5,8 @@ PANDOCOPTS = --pdf-engine=lualatex
 
 all: $(PDFFILES)
 
+%.pdf: %.md ../template/template.tex
+	pandoc $(PANDOCOPTS) --template ../template/template.tex -o $@ $<
+
 clean:
 	rm -f *.pdf
-
-%.pdf: %.md template/template.tex
-	pandoc $(PANDOCOPTS) --template template/template.tex -o $@ $<
