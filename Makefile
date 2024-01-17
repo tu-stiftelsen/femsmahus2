@@ -1,11 +1,11 @@
-MDFILES = $(wildcard *.md)
+MDFILES = $(wildcard */*.md)
 MDFILES := $(filter-out README.md, $(MDFILES))
+DIRS = $(wildcard */)
 PDFFILES = $(MDFILES:.md=.pdf)
+PANDOCOPTS = --pdf-engine=lualatex
 
-all: $(PDFFILES)
+all: 
+	make -C internetspecifikation all
 
 clean:
-	rm -f *.pdf
-
-%.pdf: %.md template/template.tex
-	pandoc --template template/template.tex -o $@ $<
+	make -C internetspecifikation clean
