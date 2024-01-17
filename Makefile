@@ -4,7 +4,7 @@ DIRS = $(wildcard */)
 PDFFILES = $(MDFILES:.md=.pdf)
 PANDOCOPTS = --pdf-engine=lualatex
 
-all: $(PDFFILES)
+all: 
 	make -C internetspecifikation all
 
 clean:
