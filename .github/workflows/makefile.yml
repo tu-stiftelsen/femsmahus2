@@ -2,7 +2,7 @@ name: Makefile CI for Internet-specification
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]
   pull_request:
     branches: [ "**" ]
 
@@ -21,9 +21,9 @@ jobs:
       run: make clean
 
     - name: Try building project
-      run: make
+      run: make all
 
     - uses: actions/upload-artifact@v3
       with:
           name: Internetspecifikation
-          path: internetspecifikation.pdf
+          path: internetspecifikation/internetspecifikation.pdf
