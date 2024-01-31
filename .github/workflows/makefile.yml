@@ -9,7 +9,9 @@ on:
 jobs:
   build:
 
-    runs-on: pandoc/latex
+    runs-on: ubuntu-latest
+    container:
+      image: pandoc/latex
 
     steps:
     - uses: actions/checkout@v3
