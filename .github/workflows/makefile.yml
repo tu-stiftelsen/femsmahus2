@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install basic pandoc and latex dependencies
-      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex
+      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex rsvg-convert
 
     - name: Install requirements for mermaid
       run: sudo apt install -y npm && npm install -g @mermaid-js/mermaid-cli
