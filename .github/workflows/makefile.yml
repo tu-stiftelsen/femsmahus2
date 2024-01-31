@@ -31,11 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: pandoc/extra
+      image: pandoc/extra:latest-ubuntu
       
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Clean project folder
       run: make clean
 
