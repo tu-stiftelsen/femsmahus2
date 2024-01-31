@@ -36,6 +36,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install dependencies
+      run: apt update && apt install build-essential -y
+
     - name: Clean project folder
       run: make clean
 
