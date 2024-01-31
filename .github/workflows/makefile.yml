@@ -13,8 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install dependencies
+    - name: Install basic pandoc and latex dependencies
       run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex
+
+    - name: Install requirements for mermaid
+      run: sudo apt install -y npm && npm install -g @mermaid-js/mermaid-cli
 
     - name: Clean project folder
       run: make clean
