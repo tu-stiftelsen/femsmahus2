@@ -27,8 +27,8 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-          name: Internetspecifikation
-          path: internetspecifikation/internetspecifikation.pdf
+          name: Specifikationer
+          path: */*.pdf
 
   # build-in-container:
   #   runs-on: ubuntu-latest
