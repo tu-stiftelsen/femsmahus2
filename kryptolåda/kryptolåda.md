@@ -55,17 +55,24 @@ TODO: Vad är begärandet av en ny adress en del av? Använder vi bara prefix
 från Internetspecifikationen och växlar mellan dem, eller ska vi lägga
 till hur man begär nya adresser via DHCP-PD eller en hel BGP-snurra?
 
+TODO: Vem begär ny tunnelidentitet? Ska vi ha en kontrollenhet / annat som
+har ansvar att upprätthålla tunnlar osv.
+
+TODO: Mesh, vilken del beslutar om hur vi bygger vårt mesh? 
+
+TODO: Kontrollplan?
+
 ## DoS-skydd
 
 Denial-of-service skyddet ska se till att kryptolådan ej kan sättas ur
 funktion genom designade trafikströmmar. Detta görs genom att kryptolådor
-ska klara av ett fullt trafikflöde enligt dess lager 2 interface. 
+ska klara av ett fullt trafikflöde enligt dess datalänklager. 
 
 TODO: Givet korrekt protokoll, port och adress så lämnar DoS över till trafikskydd?
 
 - **Krav:**
   - DoS-skyddet **ska** filtrera bort all trafik som inte är adresserad till aktiv kryptografisk tunnel. 
-  - DoS-skyddet **ska** upprätthålla full tillgänglighet vid lager 2 interfacets fulla trafikhastighet. 
+  - DoS-skyddet **ska** upprätthålla full tillgänglighet vid datalänkslagrets fulla trafikhastighet. 
 
 ## Trafikskydd
 
@@ -76,8 +83,19 @@ TODO: Vad gör trafikskyddet i den här lösningen?
 
 ## Textskydd
 
+TODO: Hur mycket valfrihet ska finnas för textskyddet? Får användare välja vad som helst? 
+
 - **Krav:**
   - Textskyddet **ska** meddela trafikskyddet aktiva tunnelidentiteter. 
+
+# Exempel
+
+## Från klient på insidan till trafik på utsidan
+
+![Trafik som går från klient](inut.svg){ width=100% }
+
+
+## Trafik utifrån in till klient
 
 # Verifikation
 

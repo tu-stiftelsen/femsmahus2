@@ -1,7 +1,8 @@
 MDFILES = $(wildcard *.md)
 MDFILES := $(filter-out README.md, $(MDFILES))
 PDFFILES = $(MDFILES:.md=.pdf)
-SVGFILES = $(wildcard *.svg)
+IMAGEFILES = $(wildcard *.mmd)
+SVGFILES = $(IMAGEFILES:.mmd=.svg)
 PANDOCOPTS = --pdf-engine=lualatex --listings
 
 all: $(PDFFILES)
