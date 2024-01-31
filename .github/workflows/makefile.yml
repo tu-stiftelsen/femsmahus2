@@ -28,7 +28,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
           name: Specifikationer
-          path: */*.pdf
+          path: "*/*.pdf"
 
   # build-in-container:
   #   runs-on: ubuntu-latest
