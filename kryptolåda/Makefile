@@ -1,7 +1,7 @@
 MDFILES = $(wildcard *.md)
 MDFILES := $(filter-out README.md, $(MDFILES))
 PDFFILES = $(MDFILES:.md=.pdf)
-PANDOCOPTS = --pdf-engine=lualatex
+PANDOCOPTS = --pdf-engine=lualatex --listings
 
 all: $(PDFFILES)
 

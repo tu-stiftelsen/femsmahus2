@@ -6,8 +6,7 @@ PDFFILES = $(MDFILES:.md=.pdf)
 PANDOCOPTS = --pdf-engine=lualatex
 
 all:
-	$(foreach var,$(DIRS), make -C $(var) all;)
-	
+	$(foreach var,$(DIRS), echo "In $(var)" && make -C $(var) all;)
 
 clean:
 	$(foreach var,$(DIRS), make -C $(var) clean;)
