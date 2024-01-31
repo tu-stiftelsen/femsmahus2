@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Install basic pandoc and latex dependencies
-      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex librsvg2-bin
+      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-european texlive-luatex librsvg2-bin
 
     - name: Install requirements for mermaid
       run: sudo apt install -y npm && npm install -g @mermaid-js/mermaid-cli
@@ -30,7 +30,7 @@ jobs:
           name: Specifikationer
           path: "*/*.pdf"
 
-  # build-in-container:
+  # build-in-container: 
   #   runs-on: ubuntu-latest
     
   #   container:
