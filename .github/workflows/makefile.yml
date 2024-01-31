@@ -8,17 +8,34 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    container:
-      image: pandoc/latex
 
     steps:
     - uses: actions/checkout@v3
 
-   # - name: Install dependencies
-   #   run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex
+    - name: Install dependencies
+      run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-all texlive-luatex
 
+    - name: Clean project folder
+      run: make clean
+
+    - name: Try building project
+      run: make all
+
+    - uses: actions/upload-artifact@v3
+      with:
+          name: Internetspecifikation
+          path: internetspecifikation/internetspecifikation.pdf
+
+  build-in-container:
+    runs-on: ubuntu-latest
+    
+    container:
+      image: pandoc/extra
+      
+    steps:
+    - uses: actions/checkout@v3
+    
     - name: Clean project folder
       run: make clean
 
