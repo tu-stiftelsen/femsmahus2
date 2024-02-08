@@ -181,7 +181,7 @@ avlämningsutrustning är 8 timmar.
   - Operatören **ska** följa etablerad paket-taggningsstandard
   - Operatören **ska** designa nät med redudans och erbjuda tjänster utan
     nedtid
-  - Operatören **ska** **TODO** formulera 8-timmars-kravet fint
+  - Operatören **ska** kunna avhjälpa utrustningsfel i avlämningsnätet inom 8 timmar
 - **Rekommendation:**
   - Operatören **bör** erbjuda en MTU på 9180&nbsp;byte på avlämningsnätet på användarens begäran
 
