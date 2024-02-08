@@ -137,7 +137,7 @@ adresstilldelningen.
   - Enskilda enheter bakom anslutningspunkt **ska** ska stödja DHCPv6 och SLAAC
   - Adresser tilldelade till enheter bakom anslutningspunkt **ska** vara globalt adresserbara
 - **Rekommendationer:**
-  - IPv6-noder **bör** fungera enligt [RFC&nbsp;8505](https://doi.org/10.17487/rfc8504)
+  - IPv6-noder **bör** fungera enligt [RFC&nbsp;8504](https://doi.org/10.17487/rfc8504)
 
 ## Paketförmedling
 
