@@ -124,7 +124,7 @@ otillgängliga blir det då fortfarande möjligt att förmedla paket.
 - **Rekommendation:**
   - Tilldelade adresser **bör** fungera även efter att DHCP-lease har utgått
 
-## Paketförmedlning
+## Paketförmedling
 
 **Förmedling** Operatören ska vidarebefordra IPv6-paket adresserade till adresser inom användarens
 tilldelade adressrymd till minst en enhet ansluten till avlämningsnätet.
