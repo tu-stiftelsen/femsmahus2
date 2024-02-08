@@ -117,18 +117,27 @@ månader.
 - **Rekommendation:**
   - Tilldelade adresser **bör** inte ändras
 
-### Rekommendation för kundansluten utrustning
+### Rekommendation för kundansluten utrustning vid anslutningspunkt
 
 Eftersom adresser är semistatiska, dvs. förändras relativt sällan, är det lämpligt att ansluten
 utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kraftavbrott. I
 händelse av felfall där paketförmedling fungerar men stödfunktioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
-**TODO** Referera till https://www.rfc-editor.org/rfc/rfc8504 och kompisar. Detta dokument ska ge rekommendationer för "IPv6-hosts" med.
-
 - **Krav:**
   - Tilldelade adresser **ska** fungera under hela DHCPv6-lease tiden,
     även om DHCPv6-funktionen går ner
+
+### Rekommendation för kundanslutning utrustning bakom anslutningspunkt
+
+Hosts bakom anslutningspunkt ska hantera både DHCPv6 och SLAAC för
+adresstilldelningen. 
+
+- **Krav:**
+  - Enskilda enheter bakom anslutningspunkt **ska** ska stödja DHCPv6 och SLAAC
+  - Adresser tilldelade till enheter bakom anslutningspunkt **ska** vara globalt adresserbara
+- **Rekommendationer:**
+  - IPv6-noder **bör** fungera enligt [RFC&nbsp;8505](https://doi.org/10.17487/rfc8504)
 
 ## Paketförmedling
 
