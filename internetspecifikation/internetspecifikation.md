@@ -86,7 +86,7 @@ Tilldelning av adressblock till användare sker genom Dynamic Host Configuration
 (DHCPv6) prefix delegation (PD) [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415).
 
 Standardtilldelningen av IP-adresser till en kund ska vara ett /56-block, vilket motsvarar 256
-/64-block. Minsta tillåtna tilldelning för en fast anslutning är ett /60-block.
+/64-block. 
 
 Det block som ansluter användare till operatör (avlämningsnätet) tilldelas
 normalt det första eller sista /64-blocket ur användarens allokering. Det
@@ -106,12 +106,11 @@ månader.
 - **Krav:**
   - Adresser tilldelade av operatör till användare **ska** vara globalt adresserbara
   - Tilldelning av adresser **ska** ske genom DHCPv6 PD [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)
-  - Tilldelning av adresser **ska** ske med minst ett /60-block
+  - Tilldelning av adresser **ska** ske med minst ett /56-block
   - DHCPv6 PD exclude **ska** användas för att indikera de adresser som avlämningsnätet använder
   - Avlämningsnätet **ska** klara av *minst* 16 direktanslutna enheter
   - Ändring av tilldelade adresser **ska** informeras om tre månader innan ändring
 - **Rekommendation:**
-  - Tilldelning av adresser **bör** ske med minst ett /56-block
   - Tilldelade adresser **bör** inte ändras
 
 ### Rekommendation för kundansluten utrustning
