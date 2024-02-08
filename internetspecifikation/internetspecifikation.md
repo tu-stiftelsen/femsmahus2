@@ -124,6 +124,8 @@ utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kra
 händelse av felfall där paketförmedling fungerar men stödfunktioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
+**TODO** Referera till https://www.rfc-editor.org/rfc/rfc8504 och kompisar. Detta dokument ska ge rekommendationer för "IPv6-hosts" med.
+
 - **Krav:**
   - Tilldelade adresser **ska** fungera under hela DHCPv6-lease tiden,
     även om DHCPv6-funktionen går ner
