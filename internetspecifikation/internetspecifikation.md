@@ -3,8 +3,8 @@ lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
-version: '0.2'
-date: '2024-01-15'
+version: '0.3'
+date: '2024-02-08'
 toc: false
 fontfamily: courier new
 ---
@@ -98,7 +98,9 @@ genom DHCPv6 PD exclude [RFC&nbsp;6603](https://doi.org/10.17487/rfc6603).
 Det ska vara möjligt för kunden att ansluta minst 16 enheter direkt till
 avlämningsnätet.
 
-Föredragen livstid (preferred lifetime) för DHCPv6-lease är 604 800 sekunder (7 dagar). Giltig livstid (valid lifetime) är 2 592 000 sekunder (30 dagar).
+Föredragen livstid (preferred lifetime) för DHCPv6-lease är 604 800
+sekunder (7 dagar). Giltig livstid (valid lifetime) är 2 592 000 sekunder
+(30 dagar).
 
 Ändring av de tilldelade adresserna för en anslutning ska undvikas så
 långt som möjligt. I de fall ändring sker ska trafik till och från de
@@ -123,7 +125,8 @@ händelse av felfall där paketförmedling fungerar men stödfunktioner, exempel
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
 - **Krav:**
-  - Tilldelade adresser **ska** fungera under hela DHCPv6-lease tiden, även om DHCP-funktionen går ner
+  - Tilldelade adresser **ska** fungera under hela DHCPv6-lease tiden,
+    även om DHCPv6-funktionen går ner
 
 ## Paketförmedling
 
