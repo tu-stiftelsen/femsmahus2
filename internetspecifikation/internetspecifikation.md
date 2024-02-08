@@ -118,7 +118,7 @@ månader.
 
 Eftersom adresser är semistatiska, dvs. förändras relativt sällan, är det lämpligt att ansluten
 utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kraftavbrott. I
-händelse av felfall där paketförmedling fungerar men stödfuntioner, exempelvis DHCPv6, är
+händelse av felfall där paketförmedling fungerar men stödfunktioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
 - **Rekommendation:**
