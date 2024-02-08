@@ -121,8 +121,8 @@ utrustning sparar sina tilldelade adresser och adressblock vid omstarter och kra
 händelse av felfall där paketförmedling fungerar men stödfunktioner, exempelvis DHCPv6, är
 otillgängliga blir det då fortfarande möjligt att förmedla paket.
 
-- **Rekommendation:**
-  - Tilldelade adresser **bör** fungera även efter att DHCP-lease har utgått
+- **Krav:**
+  - Tilldelade adresser **ska** fungera under hela DHCP-lease tiden, även om DHCP-funktionen går ner
 
 ## Paketförmedling
 
