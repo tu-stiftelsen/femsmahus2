@@ -104,3 +104,5 @@ TODO: Ta fram mätbara krav på kryptolådan
 # Referensdesign
 
 TODO: Ta fram referensdesign. Ev raspberry pi / liten referensdesign som man kan bygga och testa?
+
+TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än Internet?
