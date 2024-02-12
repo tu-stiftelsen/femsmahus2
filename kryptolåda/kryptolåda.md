@@ -92,10 +92,14 @@ TODO: Hur mycket valfrihet ska finnas för textskyddet? Får användare välja v
 
 ## Från klient på insidan till trafik på utsidan
 
+TODO: Reffa internetspecifikationen. På insidan så ska en klient inte se
+någon skillnad.
+
 ![Trafik som går från klient](inut.svg){ width=100% }
 
-
 ## Trafik utifrån in till klient
+
+TODO: Hur sker avskalning av skydd? 
 
 # Verifikation
 
