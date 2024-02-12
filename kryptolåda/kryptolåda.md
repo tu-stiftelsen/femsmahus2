@@ -78,6 +78,11 @@ TODO: Givet korrekt protokoll, port och adress så lämnar DoS över till trafik
 
 TODO: Vad gör trafikskyddet i den här lösningen?
 
+TODO: De flesta protokoll idag gör en kombo av trafikskydd och textskydd.
+Vill vi dela upp dem? Antar att det finns fördelar med att kunna dela upp
+dem även fast de flesta implementationer sköter trafik och textskydd
+tillsammans. 
+
 - **Krav:**
   - Trafikskyddet **ska** meddela DoS-skyddet aktiva tunnelidentiteter. 
 
