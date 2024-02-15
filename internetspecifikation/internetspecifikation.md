@@ -70,19 +70,23 @@ den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 
 ## Tilldelning av IP-adresser
 
-I IPv6 tilldelas adresser i block. Storleken på ett block uttrycks normalt som ett snedstreck följt
-av antalet fasta bitar i början av blockets adresser. Exempelvis innebär tilldelning av ett
-/48-block att kunden tilldelas en mängd adresser där de första 48 bitarna i adressen är desamma.
-Kunden är fri att fördela de återstående 80 bitarna inom sitt nät. Det minsta block som tilldelas en
-enskild broadcastdomän är normalt /64.
+I IPv6 tilldelas adresser i block. Storleken på ett block uttrycks normalt
+som ett snedstreck följt av antalet fasta bitar i början av blockets
+adresser. Exempelvis innebär tilldelning av ett /48-block att kunden
+tilldelas en mängd adresser där de första 48 bitarna i adressen är
+desamma. Kunden är fri att fördela de återstående 80 bitarna inom sitt
+nät. Det minsta block som tilldelas en enskild broadcastdomän är normalt
+/64.
 
 Samtliga tilldelade adresser ska vara globalt adresserbara.
 
-Tilldelning av adressblock till användare sker genom Dynamic Host Configuration Protocol version 6
-(DHCPv6) prefix delegation (PD) [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415).
+Tilldelning av adressblock till användare sker genom Dynamic Host
+Configuration Protocol version 6 (DHCPv6) prefix delegation (PD)
+[RFC&nbsp;8415](https://doi.org/10.17487/rfc8415). Detta bör ske enligt
+DHCPv6 PD option 18, 27 eller motsvarande. 
 
-Standardtilldelningen av IP-adresser till en kund ska vara ett /56-block, vilket motsvarar 256
-/64-block.
+Standardtilldelningen av IP-adresser till en kund ska vara ett /56-block,
+vilket motsvarar 256 /64-block.
 
 Det block som ansluter användare till operatör (avlämningsnätet) tilldelas
 normalt det första eller sista /64-blocket ur användarens allokering. Det
@@ -116,6 +120,8 @@ månader.
     ändring.
 - **Rekommendation:**
   - Tilldelade adresser **bör** inte ändras.
+  - Tilldelning av adresser **bör** ske genom DHCPv6 PD option 18 eller 27
+    ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)).
 
 ### Rekommendation för kundansluten utrustning vid anslutningspunkt
 
