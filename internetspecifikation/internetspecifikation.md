@@ -83,7 +83,9 @@ Samtliga tilldelade adresser ska vara globalt adresserbara.
 Tilldelning av adressblock till användare sker genom Dynamic Host
 Configuration Protocol version 6 (DHCPv6) prefix delegation (PD)
 [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415). Detta bör ske enligt
-DHCPv6 PD option 18, 27 eller motsvarande. 
+DHCPv6 PD option 18, 27 eller motsvarande beständig[^1] tilldelning. 
+
+[^1]: Med *beständig* avser vi den engelska tekniska termen *persistent*.
 
 Standardtilldelningen av IP-adresser till en kund ska vara ett /56-block,
 vilket motsvarar 256 /64-block.
@@ -232,6 +234,9 @@ Avlämning av trådlös internetanslutning ska ske genom Wi-Fi:
 
 * IEEE 802.11a/b/g/n/ac/ax/be
 * IEEE 802.11ah
+
+Ovan beskriver avlämning till lokalt nät, ej anslutning från, exempelvis,
+publik hotspot till enskild enheter.
 
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
