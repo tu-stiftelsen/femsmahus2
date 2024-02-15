@@ -174,8 +174,9 @@ direkt till avlämningsnätet.
 förmedlade från användaren. Endast paket med avsändaradresser från användarens tilldelade
 adressområde ska vidarebefordras.
 
-**Colours** I det fall olika adressrymder används för olika tilläggstjänster ska taggning med
-colours ske (RFC&nbsp;xxxx). Taggningen ska vara densamma för alla operatörer i Sverige.
+**Colours** I det fall olika adressrymder används för olika
+tilläggstjänster ska taggning med colours ske. Taggningen ska vara
+densamma för alla operatörer i Sverige.
 
 **Tillgänglighet** Längsta tillåtna avbrott på utrustning i operatörens nät som inte är
 avlämningsutrustning är 60 sekunder. Det här kravet innebär att all operatörens utrustning, utom
