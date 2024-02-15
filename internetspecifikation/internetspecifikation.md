@@ -122,7 +122,8 @@ månader.
     ändring.
 - **Rekommendation:**
   - Tilldelade adresser **bör** inte ändras.
-  - Tilldelning av adresser **bör** ske genom DHCPv6 option 18 eller 27
+  - Tilldelning av adresser **bör** ske genom DHCPv6 option 18, 27 eller
+    motsvarande beständig tilldelning[^1]
     ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)).
 
 ### Rekommendation för kundansluten utrustning vid anslutningspunkt
