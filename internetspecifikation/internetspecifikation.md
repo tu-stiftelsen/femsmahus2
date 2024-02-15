@@ -3,8 +3,8 @@ lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
-version: '0.3'
-date: '2024-02-08'
+version: '0.4'
+date: '2024-02-15'
 toc: false
 fontfamily: courier new
 ---
