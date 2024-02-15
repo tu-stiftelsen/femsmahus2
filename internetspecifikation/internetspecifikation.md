@@ -196,6 +196,11 @@ avlämningsutrustning är 8 timmar.
 
 # Lager 1 & 2: specifikation för överlämning
 
+Denna specifikation går igenom två primära metoder för överlämningen,
+antingen trådbunden eller trådlös. Notera att den trådbundna överlämningen
+rör överlämningen från operatör till kundutrustning, dvs vanligtvis en
+trådlös router. 
+
 ## Fast anslutning
 
 Följande standarder accepteras i avlämningspunkten:
@@ -217,10 +222,10 @@ VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
 ## Trådlös anslutning
 
-- **FIXME:** Utveckla lite
-- **FIXME:** Lägg tillbaka mobiltelefonitexten och dubbelkolla formuleringar
+Avlämning av trådlös internetanslutning ska ske genom Wi-Fi:
 
-Avlämning av trådlös internetanslutning ska ske genom Wi-Fi (IEEE 802.11a/b/g/n/ac/ax/be).
+* IEEE 802.11a/b/g/n/ac/ax/be
+* IEEE 802.11ah
 
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
@@ -261,7 +266,7 @@ mottagare. I fall ingen mottagare erhåller paket är testet underkänt.
 
 Följande referensmottagare med stöd för olika MTU ska användas:
 
-* 576 byte
+* 1280 byte
 * 1500 byte
 * 4470 byte
 * 9000 byte
@@ -271,7 +276,7 @@ Detta för att ge en god testbredd.
 - **Testkrav:**
   - För godkänt resultat ska avsändaren ha mottagit svar från referensmottagaren på 249 av 250
   avsända paket (99,6%) med IPv6 MTU på 9000&nbsp;byte, 4470&nbsp;byte, 1500&nbsp;byte och
-  576&nbsp;byte.
+  1280&nbsp;byte.
   - Paket som tar längre tid än 20&nbsp;ms (en väg) att nå mottagaren räknas som förlorat.
   - Kommer fler än fem (2%) av paketen fram i oordning räknas det som avbrott på förbindelsen.
 
