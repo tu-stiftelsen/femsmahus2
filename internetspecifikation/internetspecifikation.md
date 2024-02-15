@@ -83,7 +83,7 @@ Samtliga tilldelade adresser ska vara globalt adresserbara.
 Tilldelning av adressblock till användare sker genom Dynamic Host
 Configuration Protocol version 6 (DHCPv6) prefix delegation (PD)
 [RFC&nbsp;8415](https://doi.org/10.17487/rfc8415). Detta bör ske enligt
-DHCPv6 PD option 18, 27 eller motsvarande beständig[^1] tilldelning. 
+DHCPv6 option 18, 27 eller motsvarande beständig[^1] tilldelning. 
 
 [^1]: Med *beständig* avser vi den engelska tekniska termen *persistent*.
 
@@ -122,7 +122,7 @@ månader.
     ändring.
 - **Rekommendation:**
   - Tilldelade adresser **bör** inte ändras.
-  - Tilldelning av adresser **bör** ske genom DHCPv6 PD option 18 eller 27
+  - Tilldelning av adresser **bör** ske genom DHCPv6 option 18 eller 27
     ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)).
 
 ### Rekommendation för kundansluten utrustning vid anslutningspunkt
