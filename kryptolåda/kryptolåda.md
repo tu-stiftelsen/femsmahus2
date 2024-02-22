@@ -110,8 +110,10 @@ TODO: Hur sker avskalning av skydd?
 
 TODO: Ta fram mätbara krav på kryptolådan
 
-# Referensdesign
+# Proof of concept
 
-TODO: Ta fram referensdesign. Ev raspberry pi / liten referensdesign som man kan bygga och testa?
+TODO: Ta fram PoC? Ev raspberry pi / liten referensdesign som man kan bygga och testa?
+
+# Annat
 
 TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än Internet?
