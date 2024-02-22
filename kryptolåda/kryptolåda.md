@@ -120,6 +120,10 @@ TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än Internet?
 
 # Från tidigare spec
 
+## Frequency hopping
+
+Kan man använda de sista 64-bitarna i en IPv6-adress för frequency hopping på ett bra sätt?
+
 ## Kryptosystem
 För de användare som tidigare använt fasta förbindelser eller någon form av VPN-tjänst tillhandahåller Fem små hus-infrastrukturen ett kryptosystem. Kryptosystemet ger skydd mot obehörig trafik, avlyssning och överbelastningsattacker.
 
