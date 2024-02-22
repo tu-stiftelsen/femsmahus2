@@ -117,3 +117,16 @@ TODO: Ta fram PoC? Ev raspberry pi / liten referensdesign som man kan bygga och 
 # Annat
 
 TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än Internet?
+
+# Från tidigare spec
+
+## Kryptosystem
+För de användare som tidigare använt fasta förbindelser eller någon form av VPN-tjänst tillhandahåller Fem små hus-infrastrukturen ett kryptosystem. Kryptosystemet ger skydd mot obehörig trafik, avlyssning och överbelastningsattacker.
+
+Kryptosystemets princip är att det överför Ethernet-paket mellan två punkter genom att man kapslar in det krypterade Ethernet-paketet i ett IPv6-paket som skickas över infrastrukturen. Olika metoder används för att skydda kryptots ändpunktsadresser mot överbelastningsattacker. Har man flera korresponderande motparter via samma krypto identifieras de med ett VLAN per motpart.
+
+Kryptot ansluts till infrastrukuren med 100/400Gbit och tjänsten mot användaren är förmedling av Ethernet-paket med 100/10Gbit-anslutning. Maximal överförd lager 2-Ethernet-MTU är 8210 byte.
+
+För detaljspecifikation av kryptot, se del 4 som tas fram av en separat arbetsgrupp.
+
+En enklare form av tunnling, motsvarande MPLS, är att använda L2TPv3 över IPv6. Funktionaliteten finns i de flesta kommersiella routrar och kan i vissa fall kombineras med routerns kryptofunktion.
