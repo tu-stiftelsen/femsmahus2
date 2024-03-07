@@ -1,0 +1,15 @@
+---
+title: Trafik som ska ut
+---
+sequenceDiagram
+    participant D as "Enhet på insidan"
+    box Kryptolåda
+    participant T as "Textskydd"
+    participant S as "Trafikskydd"
+    participant DoS as "DoS-skydd"
+    end
+    participant I as "Internet"
+    D->>T: Trafik i klartext
+    T->>S: något
+    S->>DoS: något
+    DoS->>I: krypterad trafik
