@@ -259,7 +259,7 @@ utbyggnad och löpande drift av infrastrukturen.
 
 - **Rekommendation:**
   - Operatören **bör** erbjuda en single-stack lösning baserat på IPv6.
-  - Operatören **bör** erbjuda andra protokoll och adressrymber, såsom IPv4,
+  - Operatören **bör** erbjuda andra protokoll och adressrymder, såsom IPv4,
     över IPv6.
 
 # Verifiering av internetanslutning
