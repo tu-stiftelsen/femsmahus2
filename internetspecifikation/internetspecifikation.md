@@ -65,7 +65,7 @@ den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 [RFC&nbsp;8200](https://doi.org/10.17487/rfc8200).
 
 - **Krav:**
-  - En internetanslutning **ska** baseras på förmedlning av IPv6-paket
+  - En internetanslutning **ska** baseras på förmedling av IPv6-paket
 
 ## Tilldelning av IP-adresser
 

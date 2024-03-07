@@ -1,0 +1,11 @@
+---
+title: Arkitekturell skiss
+---
+sequenceDiagram
+    participant D as "Enhet på insidan"
+    box Överlämning
+    participant O as "Överlämning"
+    end
+    participant I as "Internet"
+    I->>O: Överlämningstrafik
+    O->>D: exempel på trafik på insidan
