@@ -114,13 +114,13 @@ Kryptolådan använder statistiska metoder för att identifiera källadresser so
 
 Adresshoppningen kan exempelvis realiseras genom att de 64 lägsta bitarna i output från AES(*k*, *CT*), där k är en nyckel genererad från del delade hemligheten mellan två kryptolådor och *CT* är klartexten genererad enligt tabellen nedan.
  
-<!-- | Bit | Data | Förklaring |
+| Bit | Data | Förklaring |
 |:--------|:--------|:--------|
 | 0-15 | Låd-id | Anger kryptolådans id. Medger upp till 65536 kryptolådor med samma nyckel. |
 | 16-56 | Reserv | Ej specificerade. Sätts till noll eller till ett slumpmässigt värde som handskakas fram. |
 | 57-83 | Adressintervall (ms) | Giltighetstiden för en adress enligt systemparameter eller handskakning. |
 | 84-100 | [Modified Julian Date](https://en.wikipedia.org/wiki/Julian_day#Variants) | Antal hela dagar sedan midnatt den 17 november 1858 ([UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)). |
-| 101-127 | Tid sedan midnatt (ms) | Början på adressens giltighetstid (UTC). |   -->
+| 101-127 | Tid sedan midnatt (ms) | Början på adressens giltighetstid (UTC). | 
 
 Ett alternativ till att använda låd-id är att förhandla fram en separat nyckel för varje riktning vid handskakningen. Kryptolådorna måste ha gemensam tid med en noggrannhet som är signifikant bättre än adressintervallet. Den föreslås erhållas genom [NTS](https://datatracker.ietf.org/doc/html/rfc8915). Användning av MJD och tid sedan midnatt eliminerar problem med skottsekunder, UNIX-epochs osv. 
 
