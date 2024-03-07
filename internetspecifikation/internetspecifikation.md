@@ -232,10 +232,11 @@ VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
 ## Trådlös anslutning
 
-Avlämning av trådlös internetanslutning ska ske genom Wi-Fi:
+Avlämning av trådlös internetanslutning ska ske genom Wi-Fi eller 3GPP-standard:
 
 * IEEE 802.11a/b/g/n/ac/ax/be
 * IEEE 802.11ah
+* 3GPP enligt [RFC&nbsp;7066](https://doi.org/10.17487/rfc7066).
 
 Ovan beskriver avlämning till lokalt nät, ej anslutning från, exempelvis,
 publik hotspot till enskild enheter.
@@ -269,6 +270,11 @@ För verifiering av att en internetanslutning uppfyller kraven i den här specif
 finnas ett antal referenssändare- och mottagare placerade fysiskt på olika platser i Sverige och
 logiskt på olika platser i nätverket. Det ska finnas minst tre referenssändare- och mottagare i
 Sverige som drivs på uppdrag av ansvarig myndighet.
+
+## Verifiering och trådlös anslutning
+
+För verifiering av trådlös anslutning antas en fast enhet som mottagare.
+Presentandakrav nedan gäller ej för terminal i rörelse. 
 
 ## Test av transparens
 
