@@ -42,12 +42,12 @@ information som skickas mellan dem ska skyddas med avseende
 konfidentialitet, riktighet, tillgänglighet och äkthet enligt nedanstående
 tabell.
  
-<!-- | Egenskap | Beskrivning |
-|:--------|:--------|
+| Egenskap | Beskrivning |
+|---|---|
 | Konfidentialitet | Den överförda informationen skyddas mot obehörig avlyssning genom kryptering. |
 | Riktighet | Den överförda informationen skyddas mot avsiktlig och oavsiktlig förändring. |
 | Tillgänglighet | Systemdesignen ska, så långt det är tekniskt möjligt, skydda mot avsiktliga försök att påverka tillgängligheten i kryptolådan och bakomliggande (skyddade) system. |
-| Äkthet | Kryptolådan ska endast förmedla trafik från behöriga avsändare till bakomliggande (skyddade) system. |  -->
+| Äkthet | Kryptolådan ska endast förmedla trafik från behöriga avsändare till bakomliggande (skyddade) system. |
 
 Utöver funktionaliteten i ett vanligt VPN-krypto ska kryptolådan klara
 överbelastningsattacker (DOS-attacker) med en trafikmängd motsvarande full
