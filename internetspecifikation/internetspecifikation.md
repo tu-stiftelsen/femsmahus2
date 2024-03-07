@@ -3,8 +3,8 @@ lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
-version: '0.4'
-date: '2024-02-15'
+version: '0.5'
+date: '2024-03-07'
 toc: false
 fontfamily: courier new
 ---
@@ -30,7 +30,6 @@ IETF:s arbete publiceras i dokumentserien **Request for Comments (RFC)**. För
 att ett nätverk som utgör en del av internet ska vara fungerande och
 framtidssäkert är det en förutsättning att det är designat på det sätt som
 beskrivs av gällande RFC:er.
-
 
 ## Användning och målgrupp
 
@@ -228,7 +227,6 @@ VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
 
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
-
 
 ## Trådlös anslutning
 
