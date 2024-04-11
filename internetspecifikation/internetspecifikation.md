@@ -3,8 +3,8 @@ lang: sv-SE
 title: 'TU:s internetspecifikation'
 shorttitle: 'TU:s internetspecifikation'
 designation: '5T:3'
-version: '0.5'
-date: '2024-03-07'
+version: '0.6'
+date: '2024-04-11'
 toc: false
 fontfamily: courier new
 ---
@@ -40,7 +40,6 @@ verifiera att ISP:er lever upp till de krav som ställs på dem.
 ## Terminologi
 
 I det här dokumentet avser begreppet **IP** enbart **IPv6**.
- 
 
 ## Utveckling av specifikationen
 
@@ -169,10 +168,10 @@ kunden.
 
 **Neighbor Discovery Protocol (NDP)** Operatörens avlämningsutrustning ska
 kunna hantera minst 16 samtidiga NDP-sessioner för utrustning ansluten
-direkt till avlämningsnätet.
+direkt till avlämningsnätet [RFC&nbsp;4861](https://doi.org/10.17487/rfc4861).
 
 **Reverse-path forwarding (RPF)-kontroll** Internetoperatören ska genomföra RPF-kontroll av paket
-förmedlade från användaren. Endast paket med avsändaradresser från användarens tilldelade
+förmedlade från användaren [RFC&nbsp;2827](https://doi.org/10.17487/rfc2827). Endast paket med avsändaradresser från användarens tilldelade
 adressområde ska vidarebefordras.
 
 **Colours** I det fall olika adressrymder används för olika
