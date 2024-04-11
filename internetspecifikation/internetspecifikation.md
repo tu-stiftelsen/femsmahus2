@@ -40,6 +40,7 @@ verifiera att ISP:er lever upp till de krav som ställs på dem.
 ## Terminologi
 
 I det här dokumentet avser begreppet **IP** enbart **IPv6**.
+ 
 
 ## Utveckling av specifikationen
 
@@ -136,9 +137,9 @@ otillgängliga blir det då fortfarande möjligt att förmedla paket.
   - Tilldelade adresser **ska** fungera under hela DHCPv6-lease tiden,
     även om DHCPv6-funktionen går ner.
 
-### Rekommendation för kundanslutning utrustning bakom anslutningspunkt
+### Rekommendation för kundansluten utrustning bakom anslutningspunkt
 
-Hosts bakom anslutningspunkt ska hantera både DHCPv6 och SLAAC för
+Enheter bakom anslutningspunkt ska hantera både DHCPv6 och SLAAC för
 adresstilldelningen.
 
 - **Krav:**
@@ -190,7 +191,7 @@ avlämningsutrustning är 8 timmar.
     avlämningsnätet.
   - Operatören **ska** erbjuda en MTU på 9000&nbsp;byte som standard och anpassa
     till 1500&nbsp;byte om så krävs.
-  - Operatören **ska** kunna hantera *minst* 16 samtidigare NDP-sessioner för
+  - Operatören **ska** kunna hantera *minst* 16 samtidiga NDP-sessioner för
     användarutrustning ansluten direkt till avlämningsnätet.
   - Operatören **ska** enbart förmedla vidare paket från användaren med
     avsändaradress inom den tilldelade adressrymden.
