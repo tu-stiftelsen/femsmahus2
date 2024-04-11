@@ -181,7 +181,7 @@ densamma för alla operatörer i Sverige.
 **Tillgänglighet** Längsta tillåtna avbrott på utrustning i operatörens nät som inte är
 avlämningsutrustning är 60 sekunder. Det här kravet innebär att all operatörens utrustning, utom
 avlämningsutrustningen, måste vara redundant. Längsta tillåtna avbrott på operatörens
-avlämningsutrustning är 8 timmar.
+avlämningsutrustning skall ingå i avtalet.
 
 - **Krav:**
   - Operatören **ska** förmedla IPv6-paket adresserade till adresser inom
