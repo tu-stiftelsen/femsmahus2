@@ -190,7 +190,7 @@ avlämningsutrustning skall ingå i avtalet.
     avlämningsnätet.
   - Operatören **ska** erbjuda en MTU på 9000&nbsp;byte som standard och anpassa
     till 1500&nbsp;byte om så krävs.
-  - Operatören **ska** kunna hantera *minst* 16 samtidiga NDP-sessioner för
+  - Operatören **ska** kunna hantera *minst* 16 samtidiga NDP-frågor för
     användarutrustning ansluten direkt till avlämningsnätet.
   - Operatören **ska** enbart förmedla vidare paket från användaren med
     avsändaradress inom den tilldelade adressrymden.
@@ -222,8 +222,9 @@ Följande standarder accepteras i avlämningspunkten:
 * 100 Gbit Ethernet-avlämning specificeras under 2024
 * 400 Gbit Ethernet-avlämning specificeras under 2025
 
-Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har avtalats. Så kallad
-VLAN-taggning av virtuella nätverk (IEEE 802.1Q) ska inte ske.
+Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har 
+avtalats. All form av taggning ska ske med hjälp av DiffServ ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
+Så kallad VLAN-taggning av virtuella nätverk (IEEE 802.1Q) *får* inte ske.
 
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
