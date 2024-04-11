@@ -210,7 +210,7 @@ antingen trådbunden eller trådlös. Notera att den trådbundna överlämningen
 rör överlämningen från operatör till kundutrustning, dvs vanligtvis en
 trådlös router. 
 
-## Fast anslutning
+## Anslutning
 
 Följande standarder accepteras i avlämningspunkten:
 
@@ -221,6 +221,8 @@ Följande standarder accepteras i avlämningspunkten:
 * 10 Gbit Ethernet optical duplex SM fiber (IEEE 802.3ae ??)
 * 100 Gbit Ethernet-avlämning specificeras under 2024
 * 400 Gbit Ethernet-avlämning specificeras under 2025
+* IEEE 802.11a/b/g/n/ac/ax/be
+* IEEE 802.11ah
 
 Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har 
 avtalats. All form av taggning ska ske med hjälp av DiffServ ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
@@ -229,19 +231,17 @@ Så kallad VLAN-taggning av virtuella nätverk (IEEE 802.1Q) *får* inte ske.
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
 
-## Trådlös anslutning
+## 3GPP-baserad avlämning
 
-Avlämning av trådlös internetanslutning ska ske genom Wi-Fi eller 3GPP-standard:
+Avlämning av trådlös internetanslutning kan ske med hjälp av 3GPP-standard:
 
-* IEEE 802.11a/b/g/n/ac/ax/be
-* IEEE 802.11ah
 * 3GPP enligt [RFC&nbsp;7066](https://doi.org/10.17487/rfc7066).
 
-Ovan beskriver avlämning till lokalt nät, ej anslutning från, exempelvis,
-publik hotspot till enskild enheter.
+I sådanna fall sker IP-avlämning efter radioutrustningen. Denna IP-avlämning ska 
+uppfylla avlämningskraven enligt ovan med undantag för krav på bärare på lager 2.
 
 - **Krav:**
-  - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
+  - Operatören **ska** avlämna 3GPP-nät enligt någon av specifikationerna ovan.
 
 # Övriga kommentarer och rekommendationer
 
