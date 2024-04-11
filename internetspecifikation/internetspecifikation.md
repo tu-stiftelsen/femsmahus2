@@ -81,7 +81,7 @@ Samtliga tilldelade adresser ska vara globalt adresserbara.
 
 Tilldelning av adressblock till användare sker genom Dynamic Host
 Configuration Protocol version 6 (DHCPv6) prefix delegation (PD)
-[RFC&nbsp;8415](https://doi.org/10.17487/rfc8415). Detta bör ske enligt
+([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)). Detta bör ske enligt
 DHCPv6 option 18, 37 eller motsvarande beständig[^1] tilldelning. 
 
 [^1]: Med *beständig* avser vi den engelska tekniska termen *persistent*.
@@ -95,7 +95,7 @@ normalt det första eller sista /64-blocket ur användarens allokering. Det
 till avlämningsnätet. Avlämningsnätet annonseras mot användaren genom
 ICMPv6 router advertisement (RA). I de fall ett adressblock ur användarens
 allokering används för avlämningsnätet ska det indikeras för användaren
-genom DHCPv6 PD exclude [RFC&nbsp;6603](https://doi.org/10.17487/rfc6603).
+genom DHCPv6 PD exclude ([RFC&nbsp;6603](https://doi.org/10.17487/rfc6603)).
 Det ska vara möjligt för kunden att ansluta minst 16 enheter direkt till
 avlämningsnätet.
 
@@ -168,10 +168,10 @@ kunden.
 
 **Neighbor Discovery Protocol (NDP)** Operatörens avlämningsutrustning ska
 kunna hantera minst 16 samtidiga NDP-sessioner för utrustning ansluten
-direkt till avlämningsnätet [RFC&nbsp;4861](https://doi.org/10.17487/rfc4861).
+direkt till avlämningsnätet ([RFC&nbsp;4861](https://doi.org/10.17487/rfc4861)).
 
 **Reverse-path forwarding (RPF)-kontroll** Internetoperatören ska genomföra RPF-kontroll av paket
-förmedlade från användaren [RFC&nbsp;2827](https://doi.org/10.17487/rfc2827). Endast paket med avsändaradresser från användarens tilldelade
+förmedlade från användaren ([RFC&nbsp;2827](https://doi.org/10.17487/rfc2827)). Endast paket med avsändaradresser från användarens tilldelade
 adressområde ska vidarebefordras.
 
 **Colours** I det fall olika adressrymder används för olika
