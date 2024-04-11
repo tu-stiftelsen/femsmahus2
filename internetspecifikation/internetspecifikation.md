@@ -174,9 +174,10 @@ direkt till avlämningsnätet ([RFC&nbsp;4861](https://doi.org/10.17487/rfc4861)
 förmedlade från användaren ([RFC&nbsp;2827](https://doi.org/10.17487/rfc2827)). Endast paket med avsändaradresser från användarens tilldelade
 adressområde ska vidarebefordras.
 
-**Colours** I det fall olika adressrymder används för olika
-tilläggstjänster ska taggning med colours ske. Taggningen ska vara
-densamma för alla operatörer i Sverige.
+**DiffServ** I det fall olika trafikmärkning används för olika
+tilläggstjänster ska taggning med DiffServ, eller så kallad färgning eller
+colors, ske ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
+Märkningen ska vara densamma för alla operatörer i Sverige.
 
 **Tillgänglighet** Längsta tillåtna avbrott på utrustning i operatörens nät som inte är
 avlämningsutrustning är 60 sekunder. Det här kravet innebär att all operatörens utrustning, utom
@@ -205,10 +206,11 @@ avlämningsutrustning skall ingå i avtalet.
 
 # Lager 1 & 2: specifikation för överlämning
 
-Denna specifikation går igenom två primära metoder för överlämningen,
-antingen trådbunden eller trådlös. Notera att den trådbundna överlämningen
-rör överlämningen från operatör till kundutrustning, dvs vanligtvis en
-trådlös router. 
+Denna specifikation går regler för överlämning. Denna överlämning sker
+mellan utrustning som pratar med operatörens nät, och kundens utrustning.
+Vanliga exempel på överlämingspunkter inkluderar mellan fiberkonverterare
+och kundutrustning, någonstans mellan radiochip och processor i telefon,
+och mellan trådlös accesspunkt och användarenhet.
 
 ## Anslutning
 
@@ -225,23 +227,28 @@ Följande standarder accepteras i avlämningspunkten:
 * IEEE 802.11ah
 
 Förhandling av duplex och flödeskontroll ska ske automatiskt om inte annat har 
-avtalats. All form av taggning ska ske med hjälp av DiffServ ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
+avtalats. Om trafikmärkning behövs, så skall denna denna ske med hjälp av DiffServ ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
+
 Så kallad VLAN-taggning av virtuella nätverk (IEEE 802.1Q) *får* inte ske.
 
 - **Krav:**
   - Operatören **ska** avlämna nät enligt någon av specifikationerna ovan.
+  - **Om** trafikmärkning sker, **ska** detta göras med hjälp av DiffServ
+    ([RFC&nbsp;2474](https://doi.org/10.17487/rfc2474)).
 
-## 3GPP-baserad avlämning
+## Transport till avlämningspunkten
 
-Avlämning av trådlös internetanslutning kan ske med hjälp av 3GPP-standard:
+Bakom avlämningspunkten kan flera olika tekniker användas. Fibernät är att
+rekommendera. I de fall 3GPP-baserat nät används för transport sker
+avlämning bakom radiokretsen, detta innebär att avlämningen sker i
+exempelvis en mobiltelefon eller i en 3GPP-baserad router. 
 
-* 3GPP enligt [RFC&nbsp;7066](https://doi.org/10.17487/rfc7066).
+- **Rekommendation:**
+  - Operatören **bör** avlämna med hjälp av fiberbaserat nät.
 
-I sådanna fall sker IP-avlämning efter radioutrustningen. Denna IP-avlämning ska 
-uppfylla avlämningskraven enligt ovan med undantag för krav på bärare på lager 2.
-
-- **Krav:**
-  - Operatören **ska** avlämna 3GPP-nät enligt någon av specifikationerna ovan.
+- **Möjlighet**
+  - Operatören **kan** avlämna med hjälp av 3GPP-baserat nät bakom
+    avlämningspunkten ([RFC&nbsp;7066](https://doi.org/10.17487/rfc7066)).
 
 # Övriga kommentarer och rekommendationer
 
