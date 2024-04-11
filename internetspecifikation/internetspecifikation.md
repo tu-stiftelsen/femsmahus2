@@ -167,7 +167,7 @@ automatiskt. Om avlämningsmediet har stöd för MTU på 9180&nbsp;byte ska det 
 kunden.
 
 **Neighbor Discovery Protocol (NDP)** Operatörens avlämningsutrustning ska
-kunna hantera minst 16 samtidiga NDP-sessioner för utrustning ansluten
+kunna hantera minst 16 samtidiga NDP-frågor för utrustning ansluten
 direkt till avlämningsnätet ([RFC&nbsp;4861](https://doi.org/10.17487/rfc4861)).
 
 **Reverse-path forwarding (RPF)-kontroll** Internetoperatören ska genomföra RPF-kontroll av paket
