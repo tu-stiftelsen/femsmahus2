@@ -92,8 +92,10 @@ vilket motsvarar 256 /64-block.
 Det block som ansluter användare till operatör (avlämningsnätet) tilldelas
 normalt det första eller sista /64-blocket ur användarens allokering. Det
 är även tillåtet att tilldela ett annat globalt adresserbart adressblock
-till avlämningsnätet. Avlämningsnätet annonseras mot användaren genom
-ICMPv6 router advertisement (RA). I de fall ett adressblock ur användarens
+till avlämningsnätet. Avlämningsnätet annonseras mot användaren genom IPv6
+Stateless Address Autoconfiguration (SLAAC) ([RFC&nbsp;4862](https://doi.org/10.17487/rfc4862)).
+SLAAC använder ICMPv6 router advertisement (RA) ([RFC&nbsp;4861](https://doi.org/10.17487/rfc4861)).
+I de fall ett adressblock ur användarens
 allokering används för avlämningsnätet ska det indikeras för användaren
 genom DHCPv6 PD exclude ([RFC&nbsp;6603](https://doi.org/10.17487/rfc6603)).
 Det ska vara möjligt för kunden att ansluta minst 16 enheter direkt till
@@ -142,7 +144,7 @@ Enheter bakom anslutningspunkt ska hantera både DHCPv6 och SLAAC för
 adresstilldelningen.
 
 - **Krav:**
-  - Enskilda enheter bakom anslutningspunkt **ska** ska stödja DHCPv6 och SLAAC.
+  - Enskilda enheter bakom anslutningspunkt **ska** ska stödja DHCPv6 ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)) och SLAAC ([RFC&nbsp;4862](https://doi.org/10.17487/rfc4862)).
   - Adresser tilldelade till enheter bakom anslutningspunkt **ska** vara globalt
     adresserbara.
 - **Rekommendationer:**
@@ -158,8 +160,8 @@ tilldelade adressrymd till minst en enhet ansluten till avlämningsnätet.
 ska vidarebefordras till användarens utrustning oförvanskat, oaktat innehåll eller avsändare.
 Detsamma gäller paket från användarens utrustning till alla globalt adresserbara IPv6-adresser. I
 sammanhanget är det viktigt att notera att korrekt och oförvanskad förmedling av Internet Control
-Message Protocol version 6 (ICMPv6)-paket en förutsättning för full funktion i IPv6, vilket inte är
-fallet för IPv4.
+Message Protocol version 6 (ICMPv6)-paket ([RFC&nbsp;4443](https://doi.org/10.17487/rfc4443))
+en förutsättning för full funktion i IPv6, vilket inte är fallet för IPv4.
 
 **Maximum transmission unit (MTU)** MTU i anslutningen ska vara 9000&nbsp;byte. I de fall kundens
 anslutna utrustning inte har stöd för detta ska anpassning av MTU till 1500&nbsp;byte ske
@@ -206,10 +208,11 @@ avlämningsutrustning skall ingå i avtalet.
 
 # Lager 1 & 2: specifikation för överlämning
 
-Denna specifikation går regler för överlämning. Denna överlämning sker
+Denna specifikation gäller regler för överlämning. Denna överlämning sker
 mellan utrustning som pratar med operatörens nät, och kundens utrustning.
 Vanliga exempel på överlämingspunkter inkluderar mellan fiberkonverterare
-och kundutrustning, någonstans mellan radiochip och processor i telefon,
+och kundutrustning, någonstans mellan radiochip och processor i användare
+enhet (e.g i telefon eller mot modem) för 3GPP baserat mobilnät,
 och mellan trådlös accesspunkt och användarenhet.
 
 ## Anslutning
@@ -240,8 +243,8 @@ Så kallad VLAN-taggning av virtuella nätverk (IEEE 802.1Q) *får* inte ske.
 
 Bakom avlämningspunkten kan flera olika tekniker användas. Fibernät är att
 rekommendera. I de fall 3GPP-baserat nät används för transport sker
-avlämning bakom radiokretsen, detta innebär att avlämningen sker i
-exempelvis en mobiltelefon eller i en 3GPP-baserad router. 
+avlämning på kundens sida av radiokretsen, detta innebär att avlämningen sker i
+exempelvis i en mobiltelefon eller i en router med 3GPP-baserad modem. 
 
 - **Rekommendation:**
   - Operatören **bör** avlämna med hjälp av fiberbaserat nät.
