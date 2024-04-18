@@ -13,6 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Ensure latest and greatest repos
+      run: sudo apt update && sudo apt upgrade -y
+
     - name: Install basic pandoc and latex dependencies
       run: sudo apt install -y pandoc texlive-latex-base texlive-latex-extra texlive-lang-european texlive-luatex librsvg2-bin
 
