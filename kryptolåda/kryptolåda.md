@@ -76,7 +76,7 @@ Detta dokument är beroende av Internetspecifikation.
 trafik mellan två godtyckligt valda platser på Internet. Se
 [arkitekturskiss](#arkitektur) för exempelritning av arkitekturen. 
 
-![Arkitekturskiss](skiss.svg){ width=50% }
+ [//]: # (![Arkitekturskiss](skiss.svg){ width=50% })
 
 En kryptolåda kan både skicka och ta emot paket. Inkommande paket ska vara
 adresserade till kryptolådan
@@ -190,7 +190,7 @@ TODO: Hur mycket valfrihet ska finnas för textskyddet? Får användare välja v
 TODO: Reffa internetspecifikationen. På insidan så ska en klient inte se
 någon skillnad.
 
-![Trafik som går från klient](inut.svg){ width=100% }
+ [//]: # (![Trafik som går från klient](inut.svg){ width=100% })
 
 ## Trafik utifrån in till klient
 
