@@ -52,54 +52,20 @@
 
 \usepackage{lipsum}
 \usepackage[hidelinks]{hyperref}
-% \usepackage{longtable}
+\usepackage{longtable}
 \usepackage{booktabs}
-
-% MAGI
-% https://github.com/jgm/pandoc/issues/7475#issuecomment-1829790171
-% byter longtable mot tabularray som är bättre
-$if(tables)$
-\usepackage{tabularray}
-\let\longtable\longtblr
-\let\endlongtable\endlongtblr
-\NewTblrTheme{headless}{
-    \DefTblrTemplate{contfoot-text}{default}{}
-    \DefTblrTemplate{conthead-text}{default}{}
-    \DefTblrTemplate{caption}{default}{}
-    \DefTblrTemplate{conthead}{default}{}
-    \DefTblrTemplate{capcont}{default}{}
-}
-\SetTblrOuter[longtblr]{
-    entry=none,
-    label=none,
-    theme=headless,
-}
-\let\noalign\empty
-\def\endlastfoot{\hspace{-2.5mm}} % compensate whitespace produced by left over \empty tokens
-\let\endhead\empty
-\def\toprule{\hspace{-1mm}} % compensate whitespace produced by left over \empty tokens
-\let\midrule\empty
-\let\bottomrule\empty
-% add some optional styling
-\UseTblrLibrary{varwidth}
-\SetTblrInner[longtblr]{
-  row{1}     = {gray!20,valign=h},
-  hline{1,Z} = {0.3mm},
-  hline{2}   = {0.1mm},
-  row{Z}     = {valign=f},
-  row{odd}   = {gray!5},
-  hspan      = minimal,
-  columns    = {co=1,valign=t},
-}
-$endif$
+\usepackage{array}
 
 \usepackage[compact]{titlesec}
 
 %% flindeberg-playground april 2024
 \usepackage{amsmath,amssymb}
 \usepackage{listings,iftex}
-\usepackage{microtype,parskip}
 
+\usepackage{calc} % for calculating minipage widths
+\usepackage{microtype,parskip}
+\usepackage{luacolor}
+\usepackage[soul]{lua-ul}
 % Include packages for mermaid etc
 \usepackage{framed}
 
@@ -109,7 +75,7 @@ $endif$
 \renewcommand\labelitemi{--}
 
 % flindeberg added
-\newcommand{\real}[1]{#1}
+%\newcommand{\real}[1]{#1}
 
 \setcounter{secnumdepth}{0}
 \setlength{\parskip}{0.5cm}
