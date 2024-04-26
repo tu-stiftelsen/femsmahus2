@@ -69,6 +69,7 @@
 \usepackage[soul]{lua-ul}
 % Include packages for mermaid etc
 \usepackage{framed}
+\usepackage{gitinfo2}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\partopsep}{2pt}\setlength{\topsep}{2pt}}
@@ -96,7 +97,8 @@ $shorttitle$
 \end{center}}}}
 
 \rhead{\begin{tabular}{rl}
-Beteckning: & $designation$\\
+%Beteckning: & $designation$\\
+Beteckning: & \gitAbbrevHash\\
 Version: & $version$\\
 Datum: & $date$\\
 Sida: & \thepage~av~\pageref{LastPage}
