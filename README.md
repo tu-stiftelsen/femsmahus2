@@ -10,7 +10,7 @@ antagonist kan ha sönder det.
 
 Fem små hus, literally *five small houses*, is a Swedish Internet
 infrastructure design project. This repository belongs to the second cycle
-of the project, called *Robust Internet*. 
+of the project, called *Robust Internet*.
 
 ## Detta repo
 
@@ -18,7 +18,7 @@ I undermappar här finns (utkast) på specifikationer på delar av en robust
 internetinfrastruktur. Specifikationerna är skrivna i markdown
 (`.md`-filer) som med hjälp av `pandoc` och indirekt `lualatex` genererar
 färdiga pdf:er. De figurer som förekommer är beroende av `mermaid` och
-`mermaid-cli`. 
+`mermaid-cli`.
 
 ## Installation av beroenden
 
@@ -27,11 +27,12 @@ färdiga pdf:er. De figurer som förekommer är beroende av `mermaid` och
 Följande installerar nödvändiga beroenden på Ubuntu 22.04:
 
 ````bash
-apt install -y pandoc # övergripande ramverk för att generera 
+apt install -y pandoc # övergripande ramverk för att generera
 apt install -y texlive-latex-base texlive-latex-extra texlive-lang-european texlive-luatex # texlive och andra beroenden
 apt install -y librsvg2-bin # resurser för svg:er som behövs för att generera pdf:erna
 apt install -y npm # behövs för mermaid-cli
 npm install -g @mermaid-js/mermaid-cli # används för att generera figurer
+node /usr/local/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer/install.js # installerar puppeteer ordentligt
 ````
 
 ### MacOS
@@ -41,7 +42,7 @@ Följande installerar nödvändiga beroenden på MacOS givet att Homebrew
 
 ```bash
 brew install pandoc npm # pandoc och npm
-brew install --cask tex-live-utility 
+brew install --cask tex-live-utility
 npm install -g @mermaid-js/mermaid-cli # används för att generera figurer
 ```
 
