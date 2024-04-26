@@ -7,6 +7,8 @@ PANDOCOPTS = --pdf-engine=lualatex --listings
 
 all: $(PDFFILES)
 
+figures: $(SVGFILES)
+
 %.svg: %.mmd
 	mmdc -i $< -o $@ -t dark -b transparent
 
@@ -14,4 +16,4 @@ all: $(PDFFILES)
 	pandoc $(PANDOCOPTS) --template ../template/template.tex -o $@ $<
 
 clean:
-	rm -f *.pdf
+	rm -f *.pdf *.svg
