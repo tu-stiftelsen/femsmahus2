@@ -1,11 +1,29 @@
----
-title: Arkitekturell skiss
----
-sequenceDiagram
-    participant D as "Enhet på insidan"
-    box Överlämning
-    participant O as "Överlämning"
+
+flowchart LR
+    subgraph I["`_Internet_`"]
+        IX1["`_Knutpunkt_`"]
+        IX2["`_Knutpunkt_`"]
     end
-    participant I as "Internet"
-    I->>O: Överlämningstrafik
-    O->>D: exempel på trafik på insidan
+    subgraph OP ["`Operatör`"]
+        subgraph CS ["`Core-nät`"]
+            C1["`_Core_`"]
+            C2["`_Core_`"]
+        end
+        subgraph OS ["`Överlämningsnät`"]
+            O["`_Överlämningsenhet_`"]
+        end
+    end
+    subgraph SK ["`Enheter hos slutkund`"]
+        direction TB
+        D1["`_Enhet med access_`"]
+        D2["`_Enhet med access_`"]
+        D16["`_(... x16)_`"]
+    end 
+
+    IX1 & IX2 <-->C1 & C2
+    C1 & C2 <-->O
+    O<-->|Överlämning|D1
+    O<-->|Överlämning|D2
+    O<-..->|Överlämning|D16
+    
+    

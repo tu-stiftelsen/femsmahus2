@@ -31,6 +31,26 @@ att ett nätverk som utgör en del av internet ska vara fungerande och
 framtidssäkert är det en förutsättning att det är designat på det sätt som
 beskrivs av gällande RFC:er.
 
+## Översikt
+
+![Arkitekturskiss](oversikt.svg){ width=80% }
+
+Accessen som beskrivs i detta dokument är hur enheter får access till
+Internet, dvs möjligheten till paketförmedling med det globala nätverket
+Internet. Denna specifikation använder benämningen *core-nät* för de delar
+av en operatörs nät som måste vara redundant, och *avlämningsnät* för del
+delen av nätet som är närmast användare. 
+
+Överlämning sker mellan *avlämningsenhet* och användarutrustning,
+exempelvis mellan fiberkonverterare och användarutrustning, eller mellan
+radiochip och processor i användarenhet (e.g. i telefon eller motsvarande
+modem).
+
+Denna specifikation beskriver paketförmedling. Närliggande
+infrastrukturtjänster, som opertörstillhandahållen DNS-resolver, och
+avtalsförhållanden, som tillgänglighet på kundsupport, lämnas *explicit*
+obehandlade i denna specifikation. 
+ 
 ## Användning och målgrupp
 
 Det här dokumentet är tänkt att användas av internetoperatörer (ISP:er) vid
@@ -71,9 +91,9 @@ den levererade internetanslutningen ska därför alltid utgöras av IPv6 enligt
 
 I IPv6 tilldelas adresser i block. Storleken på ett block uttrycks normalt
 som ett snedstreck följt av antalet fasta bitar i början av blockets
-adresser. Exempelvis innebär tilldelning av ett /48-block att kunden
+adresser. Exempelvis innebär tilldelning av ett /48-block att användaren
 tilldelas en mängd adresser där de första 48 bitarna i adressen är
-desamma. Kunden är fri att fördela de återstående 80 bitarna inom sitt
+desamma. Användaren är fri att fördela de återstående 80 bitarna inom sitt
 nät. Det minsta block som tilldelas en enskild broadcastdomän är normalt
 /64.
 
@@ -211,9 +231,9 @@ avlämningsutrustning skall ingå i avtalet.
 Denna specifikation gäller regler för överlämning. Denna överlämning sker
 mellan utrustning som pratar med operatörens nät, och kundens utrustning.
 Vanliga exempel på överlämingspunkter inkluderar mellan fiberkonverterare
-och kundutrustning, någonstans mellan radiochip och processor i användare
-enhet (e.g i telefon eller mot modem) för 3GPP baserat mobilnät,
-och mellan trådlös accesspunkt och användarenhet.
+och kundutrustning, någonstans mellan radiochip och processor i
+användarenhet (e.g. i telefon eller motsvarande modem) för 3GPP baserat
+mobilnät, och mellan trådlös accesspunkt och användarenhet.
 
 ## Anslutning
 
