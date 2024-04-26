@@ -1,1 +1,10 @@
 *.swp
+
+# Node related
+node_modules/*
+package-lock.json
+package.json
+template/auto/*
+
+# Auto-generated files and stuff
+.DS_Store
