@@ -33,7 +33,7 @@ beskrivs av gällande RFC:er.
 
 ## Översikt
 
-![Arkitekturskiss](oversikt.svg){ width=80% }
+![Arkitekturskiss](oversikt.png){ width=80% }
 
 Accessen som beskrivs i detta dokument är hur enheter får access till
 Internet, dvs möjligheten till paketförmedling med det globala nätverket
