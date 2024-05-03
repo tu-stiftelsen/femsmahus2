@@ -141,11 +141,15 @@ månader.
   - Avlämningsnätet **ska** klara av *minst* 16 direktanslutna enheter.
   - Ändring av tilldelade adresser **ska** informeras om tre månader innan
     ändring.
+  - Operatörsplacerad hemmarouter, exempelvis en DOCSIS-router, **ska** stödja så kallad sub-PD.
+  - I övrigt **ska** anslutningen följa TR-177 avsnitt 4[^2].
 - **Rekommendation:**
   - Tilldelade adresser **bör** inte ändras.
   - Tilldelning av adresser **bör** ske genom DHCPv6 option 18, 37 eller
     motsvarande beständig tilldelning[^1]
-    ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)).
+    ([RFC&nbsp;8415](https://doi.org/10.17487/rfc8415)).  
+
+[^2]: Se [TR-177 avsnitt 4]([https://doi.org/10.17487/rfc8415](https://www.broadband-forum.org/pdfs/tr-177-1-0-1.pdf))
 
 ### Rekommendation för kundansluten utrustning vid anslutningspunkt
 
