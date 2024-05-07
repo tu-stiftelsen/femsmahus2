@@ -57,8 +57,8 @@ Detta dokument är en specifikation för denna lösning.
 
 ## Avhängighet
 
-Detta dokument är beroende av [Internetspecifikationen]
-(https://github.com/tu-stiftelsen/femsmahus2/blob/main/internetspecifikation/internetspecifikation.pdf). 
+Detta dokument är beroende av
+[Internetspecifikationen](https://github.com/tu-stiftelsen/femsmahus2/blob/main/internetspecifikation/internetspecifikation.pdf). 
 
 ## Kryptosystemets grundprinciper
 
@@ -80,10 +80,10 @@ ansvändaren är förmedling av Ethernet-paket med
 
 Detta kryptosystem är designad för fullgott skydd även vid känsligare
 användningsområden och större trafikmängder. En enklare ersättare av detta
-kryptosystem är en enklare form av tunnling, motsvarande MPLS, som att
-använda L2TPv3 över IPv6. Denna funktionalitet finns i de flesta
-kommersiella routrar och kan i vissa fall kombineras med routerns
-kryptofunktion.
+kryptosystem kan vara tunnling som att använda
+[L2TPv3](https://datatracker.ietf.org/doc/html/rfc3931) över IPv6. Denna
+funktionalitet finns i de flesta kommersiella routrar och kan i vissa fall
+kombineras med routerns kryptofunktion.
 
 ## Begrepp
 
@@ -91,11 +91,11 @@ TODO: Stämmer dessa eller var dessa fel?
 
 - **DoS-skydd:** Denial-of-service skydd från trafik som kommer från det
   publika Internet. En del av trafikskyddet.
-- **Trafikskydd:** Ibland benämnt *signalskydd*, rör skydd av trafikflöden
-  och behandlar bland annat störsändningar, falska meddelanden, och
-  hoppande frekvenser / mottagaradresser.
-- **Textskydd:** Ofta benämnt som kryptering, rör att skydda
-  meddelandeinnehållet även om en antagonist kan läsa trafiken. 
+- **Textskydd:** Ibland även kallat *trafikskydd*. Ofta i praktiken
+  kryptering, rör att skydda meddelandeinnehållet även om en antagonist
+  kan läsa trafiken. Underkatergorin *signalskydd* skyddar mot problem som
+  störsändningar och falska medelanden, detta med tekniker som hoppande
+  frekvenser och mottagaradresser.
 
 # Arkitektur
 
@@ -135,12 +135,15 @@ andra kryptolådor. Över den anslutningen kan de anslutna routrarna skicka
 godtycklig trafik, inklusive routinginformation.
 
 Konfidentialitet, riktighet och äkthet i trafiken tillses genom kryptering
-med en lämplig autentiserad symmetrisk kryptoalgoritm
-([ChaCha20-Poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305)?) I
-det enklaste användningsfallet har två kryptolådor en delad hemlighet som
-används för att generera en sessionsnyckel med t.ex.
-[HKDF](https://en.wikipedia.org/wiki/HKDF). Sekvensnumrering används för
+med en lämplig autentiserad och utbytbar symmetrisk kryptoalgoritm. I det
+enklaste användningsfallet har två kryptolådor en delad hemlighet som
+används för att generera en sessionsnyckel. Sekvensnumrering används för
 att detektera återuppspelningsattacker.
+
+Exempelvis kan
+[ChaCha20-Poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305) med
+fördelad symmetrisk hemlighet och
+[HKDF](https://en.wikipedia.org/wiki/HKDF) användas i ett kryptosystem.
 
 ### Skydd mot överbelastningsattacker
 Systemen på kryptolådans klartextsida skyddas mot överbelastningsattacker
@@ -166,9 +169,10 @@ Signaling (DOTS)](https://datatracker.ietf.org/doc/rfc9244/) för att
 tillse att trafiken filtreras så tidigt så möjligt i nätverket.
 
 Adresshoppningen kan exempelvis realiseras genom att de 64 lägsta bitarna
-i output från AES(*k*, *CT*), där k är en nyckel genererad från del delade
-hemligheten mellan två kryptolådor och *CT* är klartexten genererad enligt
-tabellen nedan.
+i output från det symmetriska blockkryptot
+[AES](https://csrc.nist.gov/pubs/fips/197/final)(*k*, *CT*), där k är en
+nyckel genererad från del delade hemligheten mellan två kryptolådor och
+*CT* är klartexten genererad enligt tabellen nedan.
  
 | Bit | Data | Förklaring |
 |:--------|:--------|:--------|
@@ -181,8 +185,9 @@ tabellen nedan.
 Ett alternativ till att använda låd-id är att förhandla fram en separat
 nyckel för varje riktning vid handskakningen. Kryptolådorna måste ha
 gemensam tid med en noggrannhet som är signifikant bättre än
-adressintervallet. Den föreslås erhållas genom
-[NTS](https://datatracker.ietf.org/doc/html/rfc8915). Användning av MJD
+adressintervallet. Den föreslås erhållas genom det säkra
+tidsdelningsprotokollet [Network Time Security
+(NTS)](https://datatracker.ietf.org/doc/html/rfc8915). Användning av MJD
 och tid sedan midnatt eliminerar problem med skottsekunder, UNIX-epochs
 osv. 
 
@@ -198,6 +203,7 @@ osv.
 ## Proof-of-concept
 
 Ett fungerande proof of concept ska minst ha följande funktionalitet:
+
 * Sessionsinitiering över förbindelsen med hjälp av delad hemlighet och
   HKDF.
 * Krypterad och autentiserad överföring av data mellan klartextsidorna på
