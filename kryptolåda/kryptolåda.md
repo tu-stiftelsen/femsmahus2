@@ -51,24 +51,51 @@ tabell.
 
 Utöver funktionaliteten i ett vanligt VPN-krypto ska kryptolådan klara
 överbelastningsattacker (DOS-attacker) med en trafikmängd motsvarande full
-linjehastighet på lådans internetsida. (I skrivande stund upp till
-400&nbsp;Gbps.) Projektet saknar budget att skapa en produkt.
-Inledningsvis ska en specifikation tas fram. Specifikationen ska gå att
-använda för att ta fram ett proof-of-concept.
+linjehastighet på lådans internetsida. 
+
+Detta dokument är en specifikation för denna lösning. 
 
 ## Avhängighet
 
-Detta dokument är beroende av Internetspecifikation.
+Detta dokument är beroende av
+[Internetspecifikationen](https://github.com/tu-stiftelsen/femsmahus2/blob/main/internetspecifikation/internetspecifikation.pdf). 
+
+## Kryptosystemets grundprinciper
+
+Kryptosystemet ger skydd mot obehörig trafik, avlyssning och
+överbelastningsattacker.
+
+Kryptosystemets princip är att det överför Ethernet-paket mellan två
+punkter genom att man kapslar in det krypterade Ethernet-paketet i ett
+IPv6-paket som skickas över infrastrukturen. Olika metoder kan används för
+att skydda kryptots ändpunktsadresser mot överbelastningsattacker. Har man
+flera korresponderande motparter via samma krypto identifieras de med ett
+VLAN per motpart.
+
+Kryptosystemet är designad för att anslutas till infrastrukuren med
+100/400&nbsp;Gbit/s Internetanslutningshastighet och anslutning mot
+ansvändaren är förmedling av Ethernet-paket med
+10/100&nbsp;Gbit/s-anslutning. Maximal överförd lager 2-Ethernet-MTU är
+8210 byte.
+
+Detta kryptosystem är designad för fullgott skydd även vid känsligare
+användningsområden och större trafikmängder. En enklare ersättare av detta
+kryptosystem kan vara tunnling som att använda
+[L2TPv3](https://datatracker.ietf.org/doc/html/rfc3931) över IPv6. Denna
+funktionalitet finns i de flesta kommersiella routrar och kan i vissa fall
+kombineras med routerns kryptofunktion.
 
 ## Begrepp
 
+TODO: Stämmer dessa eller var dessa fel?
+
 - **DoS-skydd:** Denial-of-service skydd från trafik som kommer från det
   publika Internet. En del av trafikskyddet.
-- **Trafikskydd:** Ibland benämnt *signalskydd*, rör skydd av trafikflöden
-  och behandlar bland annat störsändningar, falska meddelanden, och
-  hoppande frekvenser / mottagaradresser.
-- **Textskydd:** Ofta benämnt som kryptering, rör att skydda
-  meddelandeinnehållet även om en antagonist kan läsa trafiken. 
+- **Textskydd:** Ibland även kallat *trafikskydd*. Ofta i praktiken
+  kryptering, rör att skydda meddelandeinnehållet även om en antagonist
+  kan läsa trafiken. Underkatergorin *signalskydd* skyddar mot problem som
+  störsändningar och falska medelanden, detta med tekniker som hoppande
+  frekvenser och mottagaradresser.
 
 # Arkitektur
 
@@ -99,20 +126,53 @@ TODO: Mesh, vilken del beslutar om hur vi bygger vårt mesh?
 TODO: Kontrollplan?
 
 ## Funktionalitet
-Användare som vill koppla samman IPv6-nätverk på ett sätt som uppfyller ovan nämnda säkerhetskrav kan använda kryptolådan. Lådans kryptotextsida ansluts till internet och tilldelas en /64-adressrymd. Lådans klartextsida ansluts till en router på det interna (skyddade) nätverket. Kryptolådan tillhandahåller en lager 2-anslutning till klartextsidan på en eller flera andra kryptolådor. Över den anslutningen kan de anslutna routrarna skicka godtycklig trafik, inklusive routinginformation.
+Användare som vill koppla samman IPv6-nätverk på ett sätt som uppfyller
+ovan nämnda säkerhetskrav kan använda kryptolådan. Lådans kryptotextsida
+ansluts till internet och tilldelas en /64-adressrymd. Lådans klartextsida
+ansluts till en router på det interna (skyddade) nätverket. Kryptolådan
+tillhandahåller en lager 2-anslutning till klartextsidan på en eller flera
+andra kryptolådor. Över den anslutningen kan de anslutna routrarna skicka
+godtycklig trafik, inklusive routinginformation.
 
-Konfidentialitet, riktighet och äkthet i trafiken tillses genom kryptering med en lämplig autentiserad symmetrisk kryptoalgoritm ([ChaCha20-Poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305)?) I det enklaste användningsfallet har två kryptolådor en delad hemlighet som används för att generera en sessionsnyckel med t.ex. [HKDF](https://en.wikipedia.org/wiki/HKDF). Sekvensnumrering används för att detektera återuppspelningsattacker.
+Konfidentialitet, riktighet och äkthet i trafiken tillses genom kryptering
+med en lämplig autentiserad och utbytbar symmetrisk kryptoalgoritm. I det
+enklaste användningsfallet har två kryptolådor en delad hemlighet som
+används för att generera en sessionsnyckel. Sekvensnumrering används för
+att detektera återuppspelningsattacker.
+
+Exempelvis kan
+[ChaCha20-Poly1305](https://en.wikipedia.org/wiki/ChaCha20-Poly1305) med
+fördelad symmetrisk hemlighet och
+[HKDF](https://en.wikipedia.org/wiki/HKDF) användas i ett kryptosystem.
 
 ### Skydd mot överbelastningsattacker
-Systemen på kryptolådans klartextsida skyddas mot överbelastningsattacker genom den autentiserade krypteringen.
+Systemen på kryptolådans klartextsida skyddas mot överbelastningsattacker
+genom den autentiserade krypteringen.
 
-En överbelastning av kryptolådan kommer emellertid få effekten att alla system som skyddas av den blir otillgängliga. För att skydda mot detta använder kryptolådan sig av hoppande adresser. Med ett visst intervall (typiskt sett något hundratal millisekunder) byter kryptolådan adress. Intervallet kan vara en systemparameter eller förhandlas mellan två lådor i samband med sessionsinitieringen, t.ex. genom mätning av RTT.
+En överbelastning av kryptolådan kommer emellertid få effekten att alla
+system som skyddas av den blir otillgängliga. För att skydda mot detta
+använder kryptolådan sig av hoppande adresser. Med ett visst intervall
+(typiskt sett något hundratal millisekunder) byter kryptolådan adress.
+Intervallet kan vara en systemparameter eller förhandlas mellan två lådor
+i samband med sessionsinitieringen, t.ex. genom mätning av RTT.
 
-Paket till andra destinationsadresser än nuvarande eller närmast föregående adress kastas. För att kunna genomföra en överbelastningsattack som mättar kryptolådans förmåga att dekryptera meddelanden måste en motståndare kunna sniffa äkta trafik från en annan kryptolåda och ställa om sin överbelastningstrafik till den nya adressen inom något hundratal millisekunder.
+Paket till andra destinationsadresser än nuvarande eller närmast
+föregående adress kastas. För att kunna genomföra en överbelastningsattack
+som mättar kryptolådans förmåga att dekryptera meddelanden måste en
+motståndare kunna sniffa äkta trafik från en annan kryptolåda och ställa
+om sin överbelastningstrafik till den nya adressen inom något hundratal
+millisekunder.
 
-Kryptolådan använder statistiska metoder för att identifiera källadresser som skickar stora mängder obehörig trafik och använder [DDoS Open Threat Signaling (DOTS)](https://datatracker.ietf.org/doc/rfc9244/) för att tillse att trafiken filtreras så tidigt så möjligt i nätverket.
+Kryptolådan använder statistiska metoder för att identifiera källadresser
+som skickar stora mängder obehörig trafik och använder [DDoS Open Threat
+Signaling (DOTS)](https://datatracker.ietf.org/doc/rfc9244/) för att
+tillse att trafiken filtreras så tidigt så möjligt i nätverket.
 
-Adresshoppningen kan exempelvis realiseras genom att de 64 lägsta bitarna i output från AES(*k*, *CT*), där k är en nyckel genererad från del delade hemligheten mellan två kryptolådor och *CT* är klartexten genererad enligt tabellen nedan.
+Adresshoppningen kan exempelvis realiseras genom att de 64 lägsta bitarna
+i output från det symmetriska blockkryptot
+[AES](https://csrc.nist.gov/pubs/fips/197/final)(*k*, *CT*), där k är en
+nyckel genererad från del delade hemligheten mellan två kryptolådor och
+*CT* är klartexten genererad enligt tabellen nedan.
  
 | Bit | Data | Förklaring |
 |:--------|:--------|:--------|
@@ -122,7 +182,14 @@ Adresshoppningen kan exempelvis realiseras genom att de 64 lägsta bitarna i out
 | 84-100 | [Modified Julian Date](https://en.wikipedia.org/wiki/Julian_day#Variants) | Antal hela dagar sedan midnatt den 17 november 1858 ([UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)). |
 | 101-127 | Tid sedan midnatt (ms) | Början på adressens giltighetstid (UTC). | 
 
-Ett alternativ till att använda låd-id är att förhandla fram en separat nyckel för varje riktning vid handskakningen. Kryptolådorna måste ha gemensam tid med en noggrannhet som är signifikant bättre än adressintervallet. Den föreslås erhållas genom [NTS](https://datatracker.ietf.org/doc/html/rfc8915). Användning av MJD och tid sedan midnatt eliminerar problem med skottsekunder, UNIX-epochs osv. 
+Ett alternativ till att använda låd-id är att förhandla fram en separat
+nyckel för varje riktning vid handskakningen. Kryptolådorna måste ha
+gemensam tid med en noggrannhet som är signifikant bättre än
+adressintervallet. Den föreslås erhållas genom det säkra
+tidsdelningsprotokollet [Network Time Security
+(NTS)](https://datatracker.ietf.org/doc/html/rfc8915). Användning av MJD
+och tid sedan midnatt eliminerar problem med skottsekunder, UNIX-epochs
+osv. 
 
 ## Nödvändiga systemparametrar
 
@@ -136,10 +203,14 @@ Ett alternativ till att använda låd-id är att förhandla fram en separat nyck
 ## Proof-of-concept
 
 Ett fungerande proof of concept ska minst ha följande funktionalitet:
-* Sessionsinitiering över förbindelsen med hjälp av delad hemlighet och HKDF.
-* Krypterad och autentiserad överföring av data mellan klartextsidorna på två kryptolådor.
+
+* Sessionsinitiering över förbindelsen med hjälp av delad hemlighet och
+  HKDF.
+* Krypterad och autentiserad överföring av data mellan klartextsidorna på
+  två kryptolådor.
 * Hoppande IPv6-adresser på kryptotextsidan.
-* Filtrering av obehöriga paket med hjälp av destinationsadress (adresshoppning) och autentiserad kryptering.
+* Filtrering av obehöriga paket med hjälp av destinationsadress
+  (adresshoppning) och autentiserad kryptering.
 
 ## Kvarvarande frågor och observationer
 
@@ -147,12 +218,20 @@ Ett fungerande proof of concept ska minst ha följande funktionalitet:
   användningsfallet kommer att vara en eller en handfull sessioner.
 * Ska kryptolådan erbjuda skydd mot trafikanalys (fyllnadssignalering)?
 * Hur hanteras out-of-order packets mht. sekvensnumreringen?
-* Är det nödvändigt att skicka [NDP](https://en.wikipedia.org/wiki/Neighbor_Discovery_Protocol)-paket med nya adresser för att inte få packet loss vid adresshoppningen? Hur lång tid innan adressbyte i så fall?
+* Är det nödvändigt att skicka
+  [NDP](https://en.wikipedia.org/wiki/Neighbor_Discovery_Protocol)-paket
+  med nya adresser för att inte få packet loss vid adresshoppningen? Hur
+  lång tid innan adressbyte i så fall?
 * Kan vi ta bort gamla adresser ur neighbortabellen med NDP?
-* När måste man byta nyckel för adresshoppningen? Även om man har observerat en viss adress så är sannolikheten *nästan* lika stor att den dyker upp igen. Med tanke på hur ofta/sällan de byts så borde det räcka något decennium eller så, men det borde kontrollräknas.
-* Beskriv någon hyfsat effektiv statistisk metod för att identifiera källadresser som skickar stora mängder överbelastningstrafik. (För det är inte praktiskt genomförbart att hålla en lista på alla i minnet.)
+* När måste man byta nyckel för adresshoppningen? Även om man har
+  observerat en viss adress så är sannolikheten *nästan* lika stor att den
+  dyker upp igen. Med tanke på hur ofta/sällan de byts så borde det räcka
+  något decennium eller så, men det borde kontrollräknas.
+* Beskriv någon hyfsat effektiv statistisk metod för att identifiera
+  källadresser som skickar stora mängder överbelastningstrafik. (För det
+  är inte praktiskt genomförbart att hålla en lista på alla i minnet.)
 
-## DoS-skydd
+## Trafikskydd
 
 Denial-of-service skyddet ska se till att kryptolådan ej kan sättas ur
 funktion genom designade trafikströmmar. Detta görs genom att kryptolådor
@@ -163,25 +242,6 @@ TODO: Givet korrekt protokoll, port och adress så lämnar DoS över till trafik
 - **Krav:**
   - DoS-skyddet **ska** filtrera bort all trafik som inte är adresserad till aktiv kryptografisk tunnel. 
   - DoS-skyddet **ska** upprätthålla full tillgänglighet vid datalänkslagrets fulla trafikhastighet. 
-
-## Trafikskydd
-
-TODO: Vad gör trafikskyddet i den här lösningen?
-
-TODO: De flesta protokoll idag gör en kombo av trafikskydd och textskydd.
-Vill vi dela upp dem? Antar att det finns fördelar med att kunna dela upp
-dem även fast de flesta implementationer sköter trafik och textskydd
-tillsammans. 
-
-- **Krav:**
-  - Trafikskyddet **ska** meddela DoS-skyddet aktiva tunnelidentiteter. 
-
-## Textskydd
-
-TODO: Hur mycket valfrihet ska finnas för textskyddet? Får användare välja vad som helst? 
-
-- **Krav:**
-  - Textskyddet **ska** meddela trafikskyddet aktiva tunnelidentiteter. 
 
 # Exempel
 
@@ -206,23 +266,6 @@ TODO: Ta fram PoC? Ev raspberry pi / liten referensdesign som man kan bygga och 
 
 # Annat
 
-TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än Internet?
+TODO: Hur hanterar vi kvantsaker? Ex nyckelutbyte över annan rutt än
+Internet? Vi skippar det? QKD har vi nog sagt inte fungerar?
 
-# Från tidigare spec
-
-## Frequency hopping
-
-Kan man använda de sista 64-bitarna i en IPv6-adress för frequency hopping på ett bra sätt?
-
-Vilket sliding window behöver vi för att hoppa effektivt?
-
-## Kryptosystem
-För de användare som tidigare använt fasta förbindelser eller någon form av VPN-tjänst tillhandahåller Fem små hus-infrastrukturen ett kryptosystem. Kryptosystemet ger skydd mot obehörig trafik, avlyssning och överbelastningsattacker.
-
-Kryptosystemets princip är att det överför Ethernet-paket mellan två punkter genom att man kapslar in det krypterade Ethernet-paketet i ett IPv6-paket som skickas över infrastrukturen. Olika metoder används för att skydda kryptots ändpunktsadresser mot överbelastningsattacker. Har man flera korresponderande motparter via samma krypto identifieras de med ett VLAN per motpart.
-
-Kryptot ansluts till infrastrukuren med 100/400Gbit och tjänsten mot användaren är förmedling av Ethernet-paket med 100/10Gbit-anslutning. Maximal överförd lager 2-Ethernet-MTU är 8210 byte.
-
-För detaljspecifikation av kryptot, se del 4 som tas fram av en separat arbetsgrupp.
-
-En enklare form av tunnling, motsvarande MPLS, är att använda L2TPv3 över IPv6. Funktionaliteten finns i de flesta kommersiella routrar och kan i vissa fall kombineras med routerns kryptofunktion.
